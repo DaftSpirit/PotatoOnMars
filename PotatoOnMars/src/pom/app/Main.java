@@ -47,7 +47,7 @@ public class Main {
 		
 		System.out.println("\n------------------------------------------------\n");
 		
-		// Motifs récurrents
+		// Motifs rï¿½currents
 		
 		// get the list of 10 most frequent SAX words
 		ArrayList<SAXRecord> motifs = res.getMotifs(10);
@@ -63,7 +63,7 @@ public class Main {
 		
 		System.out.println("\n------------------------------------------------\n");
 		
-		// rangement des données
+		// rangement des donnï¿½es
 		for(int i=0; i < slidingWindowSize ; i++)
 		{
 			ranks.add(new ArrayList<String>());
