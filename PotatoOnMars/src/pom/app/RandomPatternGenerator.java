@@ -9,7 +9,7 @@ public class RandomPatternGenerator {
 	private final static int _PATTERN_SIZE_ = 24;
 	private final static int _PATTERN_NUMBER_ = 10;
 	
-	private static File _FILE_=new File("C:\\Users\\Karuskrokro\\Desktop\\generation.txt");
+	private static File _FILE_=new File("data/generation.txt");
 	private ArrayList<Double> array = new ArrayList<Double>();
 	
 	
