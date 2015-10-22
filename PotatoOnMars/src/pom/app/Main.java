@@ -29,6 +29,7 @@ public class Main {
 		// instantiate classes
 		NormalAlphabet na = new NormalAlphabet();
 		SAXProcessor sp = new SAXProcessor();
+		//System.out.println(sp);
 
 		// read the input file
 		double[] ts = TSProcessor.readFileColumn(dataFName, 0, 0);
