@@ -14,7 +14,7 @@ import net.seninp.jmotif.sax.datastructure.SAXRecords;
 
 public class Main {
 	
-	private final static String dataFName = "D:\\Karus's world\\Cours\\3A\\+ Projet 3A\\Donnees\\48 donnees.txt";
+	private final static String dataFName = "data/48 donnees.txt";
 	private final static int slidingWindowSize = 48;
 	private final static int paaSize = 16;
 	private final static int alphabetSize = 4;
