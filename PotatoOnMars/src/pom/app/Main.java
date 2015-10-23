@@ -1,6 +1,7 @@
 package pom.app;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Set;
 
 import net.seninp.jmotif.sax.SAXException;
@@ -42,7 +43,16 @@ public class Main {
     	
 		// Rangement dans le tableau
 
-		PatternList pl = anal.makeRanksByHour(res, index);    	
+		PatternList pl = anal.makeRanksByHour(res, index); 
+		
+		WordConverter conv = new WordConverter();
+		ArrayList<double[]> converted = new ArrayList<double[]>();
+		
+		for(ArrayList<String> words : pl){
+			for(String word : words){
+				converted.add(conv.converter(word));
+			}
+		}
     	
     	
     	//Deprecated : doesn't work
