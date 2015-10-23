@@ -4,26 +4,20 @@ import java.util.ArrayList;
 
 public class PatternList extends ArrayList< ArrayList<String> >{
 	
-	private ArrayList< ArrayList<String> > ranks = new ArrayList< ArrayList<String> >();
-
-	public ArrayList< ArrayList<String> > getRanks() {
-		return ranks;
-	}
-
-	public void setRanks(ArrayList< ArrayList<String> > ranks) {
-		this.ranks = ranks;
-	}
 	
-//	@Override
-//	public String toString ()
-//	{
-//		StringBuffer tmp = new StringBuffer();
-//		for(int i = 0; i < this.ranks.size(); i++)
-//		{
-//			tmp.append(i+"h: ");
-//			tmp.append(ranks.get(i) + "\n");
-//		}	
-//		return tmp.toString();
-//	}
+	@Override
+	public String toString ()
+	{
+		int h=0;
+		StringBuffer tmp = new StringBuffer();
+		for(int i = 0; i < this.size(); i++)
+		{
+			h = (i+23)%SaxParameters.slidingWindowSize;
+			tmp.append(i+"h-"+h+"h: ");
+			tmp.append(this.get(i) + "\n");
+			//tmp.append("-" i);
+		}	
+		return tmp.toString();
+	}
 
 }

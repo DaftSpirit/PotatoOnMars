@@ -8,9 +8,6 @@ import net.seninp.jmotif.sax.datastructure.SAXRecords;
 
 public class Analyser {
 
-	static PatternList ranks = new PatternList();
-	
-	
 	public void printRecurrentPatterns( SAXRecords res , int nb ){
 		// print best "nb" motifs
 		ArrayList<SAXRecord> motifs = res.getMotifs(nb);
@@ -24,12 +21,13 @@ public class Analyser {
 	
 	
 	public PatternList makeRanksByHour( SAXRecords res, Set<Integer> index ){
-		for(int i=0; i < SaxParameters.slidingWindowSize ; i++)
+		PatternList ranks = new PatternList();
+		for(int i=0; i < SaxParameters.steps ; i++)
 		{
 			ranks.add(new ArrayList<String>());
 		}
 		for (Integer idx : index) {
-			ranks.get(idx%SaxParameters.slidingWindowSize).add(String.valueOf(res.getByIndex(idx).getPayload()));
+			ranks.get(idx%SaxParameters.steps).add(String.valueOf(res.getByIndex(idx).getPayload()));
 		}
     	System.out.println(ranks);
     	return ranks;
