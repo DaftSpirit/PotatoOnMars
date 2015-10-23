@@ -43,7 +43,10 @@ public class Main {
     	
 		// Rangement dans le tableau
 
-		anal.makeRanksByHour(res, index); 
+		PatternList pl = anal.makeRanksByHour(res, index); 
+		
+		//patterns convertis en doubles
+		PatternList converted = anal.convertRanks(pl);
 
     	
     	

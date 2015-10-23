@@ -20,7 +20,7 @@ public class Analyser {
 	}
 	
 	
-	public void makeRanksByHour( SAXRecords res, Set<Integer> index ){
+	public PatternList makeRanksByHour( SAXRecords res, Set<Integer> index ){
 		PatternList ranks = new PatternList();
 		for(int i=0; i < SaxParameters.steps ; i++)
 		{
@@ -30,8 +30,19 @@ public class Analyser {
 			ranks.get(idx%SaxParameters.steps).add(String.valueOf(res.getByIndex(idx).getPayload()));
 		}
     	System.out.println(ranks);
+    	return ranks;
 	}
 	
-	
+	public PatternList convertRanks(PatternList pl) {
+		WordConverter wc = new WordConverter();
+		PatternList res = pl;
+		for(ArrayList<String> words : res) {
+			for(String word : words) {
+				double[] tmp = wc.converter(word);
+				word = wc.valueOfTab(tmp);
+			}
+		}
+		return res;
+	}
 	
 }

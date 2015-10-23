@@ -100,6 +100,14 @@ public class WordConverter {
 		return res;
 	}
 	
+	public String valueOfTab(double[] tab) {
+		StringBuffer res = new StringBuffer();
+		for(int i = 0; i < tab.length; i++){
+			res.append(String.valueOf(tab[i]));
+		}
+		return res.toString();
+	}
+	
 	
 	
 }
