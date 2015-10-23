@@ -1,7 +1,6 @@
 package pom.app;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Set;
 
 import net.seninp.jmotif.sax.SAXException;
@@ -12,8 +11,7 @@ import net.seninp.jmotif.sax.datastructure.SAXRecords;
 
 public class Main {
 	
-	private static ArrayList< ArrayList<String> > ranks = new ArrayList< ArrayList<String> >();
-
+	private static PatternList ranks = new PatternList();
 	
 	public static void main(String[] args) throws IOException, SAXException {
 		

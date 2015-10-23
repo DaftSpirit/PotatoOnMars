@@ -8,7 +8,7 @@ import net.seninp.jmotif.sax.datastructure.SAXRecords;
 
 public class Analyser {
 
-	static ArrayList< ArrayList<String> > ranks = new ArrayList< ArrayList<String> >();
+	static PatternList ranks = new PatternList();
 	
 	
 	public void printRecurrentPatterns( SAXRecords res , int nb ){
@@ -23,7 +23,7 @@ public class Analyser {
 	}
 	
 	
-	public ArrayList< ArrayList<String> > makeRanksByHour( SAXRecords res, Set<Integer> index ){
+	public PatternList makeRanksByHour( SAXRecords res, Set<Integer> index ){
 		for(int i=0; i < SaxParameters.slidingWindowSize ; i++)
 		{
 			ranks.add(new ArrayList<String>());
