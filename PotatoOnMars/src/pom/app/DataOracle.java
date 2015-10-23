@@ -24,7 +24,7 @@ public class DataOracle {
 	public double prediction() {
 		
 		double future = 0;
-		int size = this.ts.length -1;
+		int size = this.ts.length - 2;
 		
 		for(int i = 0; i < size; i++){
 			future += this.ts[size - i];

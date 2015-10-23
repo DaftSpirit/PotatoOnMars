@@ -52,7 +52,7 @@ public class Main {
     	
     	System.out.println("\n------------------------------------------------\n");
     	
-    	System.out.println(ts[ts.length] + "the real double");
+    	System.out.println(ts[ts.length-1] + "the real double");
     	
 	}
 
