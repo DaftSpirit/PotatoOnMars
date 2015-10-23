@@ -43,16 +43,8 @@ public class Main {
     	
 		// Rangement dans le tableau
 
-		PatternList pl = anal.makeRanksByHour(res, index); 
-		
-		WordConverter conv = new WordConverter();
-		ArrayList<double[]> converted = new ArrayList<double[]>();
-		
-		for(ArrayList<String> words : pl){
-			for(String word : words){
-				converted.add(conv.converter(word));
-			}
-		}
+		anal.makeRanksByHour(res, index); 
+
     	
     	
     	//Deprecated : doesn't work
