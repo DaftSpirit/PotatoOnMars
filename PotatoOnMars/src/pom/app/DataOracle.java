@@ -5,6 +5,7 @@ package pom.app;
  * @author joris
  *
  */
+@Deprecated
 public class DataOracle {
 	
 	private double[] ts;
@@ -22,6 +23,7 @@ public class DataOracle {
 	 * @return the prediction of the last element of ts
 	 * for test purposes we try to predict an already existing element
 	 */
+	@Deprecated
 	public double prediction() {
 		
 		double future = 0;
@@ -41,6 +43,7 @@ public class DataOracle {
 	 * @return the prediction of the last element of ts
 	 * for test purposes we try to predict an already existing element
 	 */
+	@Deprecated
 	public double betterPrediction(double alpha) {
 		double future = 0;
 		int size = this.ts.length - 2;
