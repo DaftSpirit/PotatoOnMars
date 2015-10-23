@@ -5,6 +5,11 @@ import java.util.ArrayList;
 public class PatternList extends ArrayList< ArrayList<String> >{
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public String toString ()
 	{
@@ -12,10 +17,9 @@ public class PatternList extends ArrayList< ArrayList<String> >{
 		StringBuffer tmp = new StringBuffer();
 		for(int i = 0; i < this.size(); i++)
 		{
-			h = (i+23)%SaxParameters.slidingWindowSize;
+			h = ((i+SaxParameters.slidingWindowSize)%SaxParameters.steps);
 			tmp.append(i+"h-"+h+"h: ");
 			tmp.append(this.get(i) + "\n");
-			//tmp.append("-" i);
 		}	
 		return tmp.toString();
 	}

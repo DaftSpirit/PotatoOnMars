@@ -11,7 +11,6 @@ import net.seninp.jmotif.sax.datastructure.SAXRecords;
 
 public class Main {
 	
-	private static PatternList pl = new PatternList();
 	
 	public static void main(String[] args) throws IOException, SAXException {
 		
@@ -43,7 +42,7 @@ public class Main {
     	
 		// Rangement dans le tableau
 
-    	pl = anal.makeRanksByHour(res, index);    	
+		PatternList pl = anal.makeRanksByHour(res, index);    	
     	
     	
     	
