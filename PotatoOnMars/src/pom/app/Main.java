@@ -45,6 +45,15 @@ public class Main {
     	
 		// Rangement dans le tableau
     	ranks = anal.makeRanksByHour(res, index);
+    	
+    	DataOracle oracle = new DataOracle(ts);
+    	double future = oracle.prediction();
+    	System.out.println(future + "the prediction");
+    	
+    	System.out.println("\n------------------------------------------------\n");
+    	
+    	System.out.println(ts[ts.length] + "the real double");
+    	
 	}
 
 }
