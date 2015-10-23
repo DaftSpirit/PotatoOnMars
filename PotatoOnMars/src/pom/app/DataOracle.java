@@ -3,7 +3,7 @@ package pom.app;
 /**
  * predicts the future data
  * @author joris
- *
+ * @deprecated because of failure in predictions *
  */
 @Deprecated
 public class DataOracle {
