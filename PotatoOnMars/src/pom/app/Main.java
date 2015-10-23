@@ -12,8 +12,6 @@ import net.seninp.jmotif.sax.datastructure.SAXRecords;
 
 public class Main {
 	
-	
-	
 	private static ArrayList< ArrayList<String> > ranks = new ArrayList< ArrayList<String> >();
 
 	
