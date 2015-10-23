@@ -39,7 +39,7 @@ public class Analyser {
 		for(int i = 0; i < res.size(); i++) {
 			for(int j = 0; j < res.get(i).size(); j++) {
 				double[] tmp = wc.converter(res.get(i).get(j));
-				res.get(i).get(j).replace(res.get(i).get(j), wc.valueOfTab(tmp));
+				res.get(i).set(j, wc.valueOfTab(tmp));
 			}
 		}
 		return res;
