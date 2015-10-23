@@ -45,7 +45,7 @@ public class Main {
 		PatternList pl = anal.makeRanksByHour(res, index);    	
     	
     	
-    	
+    	//Deprecated : doesn't work
     	DataOracle oracle = new DataOracle(ts);
     	double future = oracle.prediction();
     	System.out.println(future + "the prediction");
