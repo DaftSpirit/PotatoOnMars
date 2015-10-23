@@ -6,6 +6,11 @@ public class WordConverter {
 		super();
 	}
 	
+	/**
+	 * converts to a double[] a word with alphabet correlation
+	 * @param word : the word to convert in a series of double
+	 * @return the double[] corresponding to the word
+	 */
 	public double[] converter(String word){
 		double[] res = new double[word.length()];
 		
@@ -94,5 +99,7 @@ public class WordConverter {
 		
 		return res;
 	}
+	
+	
 	
 }
