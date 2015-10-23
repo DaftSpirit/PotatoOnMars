@@ -14,12 +14,7 @@ import net.seninp.jmotif.sax.datastructure.SAXRecords;
 
 public class Main {
 	
-	private final static String dataFName = "data/48 donnees.txt";
-	private final static int slidingWindowSize = 48;
-	private final static int paaSize = 16;
-	private final static int alphabetSize = 4;
-	private final static NumerosityReductionStrategy nrStrategy = NumerosityReductionStrategy.fromValue(0);
-	private final static double nThreshold = 0.01;
+	
 	
 	private static ArrayList< ArrayList<String> > ranks = new ArrayList< ArrayList<String> >();
 
@@ -29,14 +24,14 @@ public class Main {
 		// instantiate classes
 		NormalAlphabet na = new NormalAlphabet();
 		SAXProcessor sp = new SAXProcessor();
-		//System.out.println(sp);
+		Analyser anal = new Analyser();
 
 		// read the input file
-		double[] ts = TSProcessor.readFileColumn(dataFName, 0, 0);
+		double[] ts = TSProcessor.readFileColumn(Analyser.dataFName, 0, 0);
 
 		// perform the discretization ( 240 motifs != pour chaque fenetre de 24 points)
-		SAXRecords res = sp.ts2saxViaWindow(ts, slidingWindowSize, paaSize, 
-		    na.getCuts(alphabetSize), nrStrategy, nThreshold);
+		SAXRecords res = sp.ts2saxViaWindow(ts, Analyser.slidingWindowSize, Analyser.paaSize, 
+		    na.getCuts(Analyser.alphabetSize), Analyser.nrStrategy, Analyser.nThreshold);
 
 		// print the output
 		Set<Integer> index = res.getIndexes();
@@ -54,31 +49,34 @@ public class Main {
 		ArrayList<SAXRecord> motifs = res.getMotifs(10);
 
 
-		// print best 10 motifs
-		for ( int i = 1; i <= 10; i++ )
-		{
-			SAXRecord topMotif = motifs.get(i-1);
-			System.out.println("top " + i + " motif "+ String.valueOf(topMotif.getPayload()) + " seen " + 
-			            topMotif.getIndexes().size() + " times.");
-		}
+//		// print best 10 motifs
+//		for ( int i = 1; i <= 10; i++ )
+//		{
+//			SAXRecord topMotif = motifs.get(i-1);
+//			System.out.println("top " + i + " motif "+ String.valueOf(topMotif.getPayload()) + " seen " + 
+//			            topMotif.getIndexes().size() + " times.");
+//		}
+		
+		anal.printRecurrentPatterns(motifs, 10);
+		
 		
 		System.out.println("\n------------------------------------------------\n");
 		
-		// rangement des donn�es
-		for(int i=0; i < slidingWindowSize ; i++)
-		{
-			ranks.add(new ArrayList<String>());
-		}
-		
-		System.out.println(ranks);
-
-		for (Integer idx : index) {
-			//System.out.println(idx);
-			//System.out.println("Je remplis le tableau " + idx%slidingWindowSize);
-			ranks.get(idx%slidingWindowSize).add(String.valueOf(res.getByIndex(idx).getPayload()));
-		}
-		
-    	System.out.println(ranks);
+//		// rangement des donn�es
+//		for(int i=0; i < Analyser.slidingWindowSize ; i++)
+//		{
+//			ranks.add(new ArrayList<String>());
+//		}
+//		for (Integer idx : index) {
+//			//System.out.println(idx);
+//			//System.out.println("Je remplis le tableau " + idx%slidingWindowSize);
+//			ranks.get(idx%Analyser.slidingWindowSize).add(String.valueOf(res.getByIndex(idx).getPayload()));
+//		}
+//		
+//    	System.out.println(ranks);
+//    	
+    	
+    	anal.makeRanksByHour(res, index);
     	
 	}
 
