@@ -48,7 +48,7 @@ public class Main {
 		
 		//patterns convertis en doubles
 		PatternList converted = anal.convertRanks(pl);
-		//System.out.println(converted);
+		System.out.println(converted);
 		
 		
 
