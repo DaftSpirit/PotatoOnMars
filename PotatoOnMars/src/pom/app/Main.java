@@ -54,7 +54,7 @@ public class Main {
     	
     	System.out.println("\n-------------------another method for prediction----------------------------\n");
     	
-    	future = oracle.betterPrediction(0.1);
+    	future = oracle.betterPrediction(0.03);
     	System.out.println(future + "the prediction");
     	
     	System.out.println("\n------------------------------------------------\n");
