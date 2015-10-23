@@ -19,7 +19,8 @@ public class Main {
 		NormalAlphabet na = new NormalAlphabet();
 		SAXProcessor sp = new SAXProcessor();
 		Analyser anal = new Analyser();
-
+		WordConverter wc = new WordConverter();
+		
 		// read the input file
 		double[] ts = TSProcessor.readFileColumn(SaxParameters.dataFName, 0, 0);
 
@@ -47,26 +48,29 @@ public class Main {
 		
 		//patterns convertis en doubles
 		PatternList converted = anal.convertRanks(pl);
+		//System.out.println(converted);
+		
+		
 
     	
-    	
-    	//Deprecated : doesn't work
-    	DataOracle oracle = new DataOracle(ts);
-    	double future = oracle.prediction();
-    	System.out.println(future + "the prediction");
-    	
-    	System.out.println("\n------------------------------------------------\n");
-    	
-    	System.out.println(ts[ts.length-1] + "the real double");
-    	
-    	System.out.println("\n-------------------another method for prediction----------------------------\n");
-    	
-    	future = oracle.betterPrediction(0.03);
-    	System.out.println(future + "the prediction");
-    	
-    	System.out.println("\n------------------------------------------------\n");
-    	
-    	System.out.println(ts[ts.length-1] + "the real double");
+//    	
+//    	//Deprecated : doesn't work
+//    	DataOracle oracle = new DataOracle(ts);
+//    	double future = oracle.prediction();
+//    	System.out.println(future + "the prediction");
+//    	
+//    	System.out.println("\n------------------------------------------------\n");
+//    	
+//    	System.out.println(ts[ts.length-1] + "the real double");
+//    	
+//    	System.out.println("\n-------------------another method for prediction----------------------------\n");
+//    	
+//    	future = oracle.betterPrediction(0.03);
+//    	System.out.println(future + "the prediction");
+//    	
+//    	System.out.println("\n------------------------------------------------\n");
+//    	
+//    	System.out.println(ts[ts.length-1] + "the real double");
     	
 	}
 
