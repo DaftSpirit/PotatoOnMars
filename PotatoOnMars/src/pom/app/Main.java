@@ -52,6 +52,15 @@ public class Main {
     	
     	System.out.println(ts[ts.length-1] + "the real double");
     	
+    	System.out.println("\n-------------------another method for prediction----------------------------\n");
+    	
+    	future = oracle.betterPrediction(0.1);
+    	System.out.println(future + "the prediction");
+    	
+    	System.out.println("\n------------------------------------------------\n");
+    	
+    	System.out.println(ts[ts.length-1] + "the real double");
+    	
 	}
 
 }
