@@ -13,7 +13,6 @@ public class WordConverter {
 	 */
 	public double[] converter(String word){
 		double[] res = new double[word.length()];
-		
 		for(int i = 0; i < word.length(); i++) {
 			switch (word.charAt(i)) {
 			case 'a':
@@ -96,7 +95,6 @@ public class WordConverter {
 				break;
 			}
 		}
-		
 		return res;
 	}
 	
