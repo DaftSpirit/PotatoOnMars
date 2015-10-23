@@ -39,7 +39,7 @@ public class DataOracle {
 	
 	/**
 	 * uses Exponentially Moving Weight Average to predict the future element of ts
-	 * @param alpha weight to use for the mean alpha c ]0 , 1]
+	 * @param alpha weight to use for the mean alpha € ]0 , 1]
 	 * @return the prediction of the last element of ts
 	 * for test purposes we try to predict an already existing element
 	 */
