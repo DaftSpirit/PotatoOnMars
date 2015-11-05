@@ -33,14 +33,20 @@ public class Analyser {
     	return ranks;
 	}
 	
-	public PatternList convertRanks(PatternList pl) {
+	public DoublePatternList convertRanks(PatternList pl) {
 		WordConverter wc = new WordConverter();
-		PatternList res = pl;
+		DoublePatternList res = new DoublePatternList();
+		
+		for(int i=0; i < SaxParameters.steps ; i++)
+		{
+			res.add(new ArrayList<double[]>());
+		}
 		for(int i = 0; i < res.size(); i++) {
+			double[] tmp = null;
 			for(int j = 0; j < res.get(i).size(); j++) {
-				double[] tmp = wc.converter(res.get(i).get(j));
-				res.get(i).set(j, wc.valueOfTab(tmp));
+				tmp = wc.converter(pl.get(i).get(j));
 			}
+			res.get(i).add(tmp);
 		}
 		return res;
 	}

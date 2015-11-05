@@ -47,7 +47,7 @@ public class Main {
 		PatternList pl = anal.makeRanksByHour(res, index); 
 		
 		//patterns convertis en doubles
-		PatternList converted = anal.convertRanks(pl);
+		DoublePatternList converted = anal.convertRanks(pl);
 		System.out.println(converted);
 		
 		
