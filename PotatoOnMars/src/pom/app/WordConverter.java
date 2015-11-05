@@ -15,7 +15,9 @@ public class WordConverter {
 		double[] res = new double[word.length()];
 		for(int i = 0; i < word.length(); i++) {
 			res[i] = (double)word.charAt(i) - 96.0;
+			//System.out.println(res[i]);
 		}
+		//System.out.println(res);
 		return res;
 	}
 	

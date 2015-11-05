@@ -39,15 +39,23 @@ public class Analyser {
 		
 		for(int i=0; i < SaxParameters.steps ; i++)
 		{
+			double[] e = new double[SaxParameters.paaSize];
 			res.add(new ArrayList<double[]>());
-		}
-		for(int i = 0; i < res.size(); i++) {
-			double[] tmp = null;
-			for(int j = 0; j < res.get(i).size(); j++) {
-				tmp = wc.converter(pl.get(i).get(j));
+			for(int j = 0; j < pl.get(i).size(); ++j) {
+				res.get(i).add(e);
 			}
-			res.get(i).add(tmp);
 		}
+
+		for(int i = 0; i < pl.size(); i++) {
+			for(int j = 0; j < pl.get(i).size(); j++) {
+				double[] tmp;
+				//System.out.println(pl.get(i).get(j));
+				tmp = wc.converter(pl.get(i).get(j));
+				for(int k = 0; k < tmp.length; ++k){
+					res.get(i).get(j)[k] = tmp[k];
+				}
+			}
+		}		
 		return res;
 	}
 	

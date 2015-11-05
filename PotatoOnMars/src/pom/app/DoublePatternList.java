@@ -18,7 +18,13 @@ public class DoublePatternList extends ArrayList<ArrayList<double[]>> {
 		{
 			h = ((i+SaxParameters.slidingWindowSize)%SaxParameters.steps);
 			tmp.append(i+"h-"+h+"h: ");
-			tmp.append(this.get(i) + "\n");
+			for(int j = 0; j < this.get(i).size(); ++j) {
+				tmp.append("[ ");
+				for(int k = 0; k < this.get(i).get(j).length; ++k) {
+					tmp.append(this.get(i).get(j)[k] + " ");
+				}
+				tmp.append("]\n");
+			}
 		}	
 		return tmp.toString();
 	}
