@@ -15,12 +15,13 @@ public class Sorter {
 	 * @author joris Constructor
 	 */
 	public Sorter() {
-		//CARPE DIEM
+		// CARPE DIEM
 	}
 
 	/**
 	 * takes one pattern out of the list and tries to reput it at the same
 	 * place. prints ont sysou the result
+	 * 
 	 * @param pl
 	 *            patternList of sorted patterns
 	 * @param idxToSort
@@ -36,42 +37,47 @@ public class Sorter {
 		System.out.println(patternToTest);
 		this.pl2.get(hour).remove(idxToSort);
 		double[] distances = new double[SaxParameters.steps];
-		
+
 		/* computes the distances between every hour */
-		for (int i = 0; i < patternToTest.length(); ++i) {
-			double distTmp = 0.0;
-			for (ArrayList<String> hours : pl) {
-				int idx = 0;
-				int numberOfWords = 0;
-				for (String pattern : hours) {
+		int idx = 0;
+		double distTmp = 0.0;
+		for (ArrayList<String> hours : this.pl2) {
+			int numberOfWords = 0;
+			for (String pattern : hours) {
+				for (int i = 0; i < patternToTest.length(); ++i) {
 					char currentChar = patternToTest.charAt(i);
 					distTmp += Distances.distanceToLetter(currentChar,
 							pattern.charAt(i));
 					numberOfWords++;
 				}
-				distances[idx] = distTmp/numberOfWords;
-				idx++;
 			}
+			distances[idx] = distTmp / numberOfWords;
+			distTmp = 0.0;
+			numberOfWords = 0;
+			idx++;
 		}
-		
-		/* takes the smallest distance and put the patterToTest at the good place */
+
+		/*
+		 * takes the smallest distance and put the patterToTest at the good
+		 * place
+		 */
 		int hourSorted = -1;
-		for(int j = 0; j < distances.length; ++j) {
-			double min = Double.MAX_VALUE;
-			if(distances[j] < min) {
+		double min = Double.MAX_VALUE;
+		for (int j = 0; j < distances.length; ++j) {	
+			System.out.println(distances[j]);
+			if (distances[j] < min) {
 				min = distances[j];
 				hourSorted = j;
 			}
 		}
 		System.out.println("hour found : " + hourSorted + "\n");
 		System.out.println("real hour : " + hour + "\n");
-		if(hourSorted == hour) {
+		if (hourSorted == hour) {
 			System.out.println("GG WP !!!");
-		}
-		else {
+		} else {
 			System.out.println("FAK !! on n'a pas reussi");
 		}
-				
+
 	}
 
 }

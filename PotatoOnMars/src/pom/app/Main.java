@@ -58,7 +58,7 @@ public class Main {
 		//TRI / SORTING
 		
 		
-		so.sortAndPrint(pl, 1, 1);
+		so.sortAndPrint(pl, 0, 1);
 		
     	
 	}
