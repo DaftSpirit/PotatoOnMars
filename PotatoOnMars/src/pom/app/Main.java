@@ -59,6 +59,9 @@ public class Main {
 		
 		
 		so.sortAndPrint(pl, 0, 1);
+		so.sortAndPrint(pl_lisse, 6, 0);
+		
+		anal.courbAnalyser(pl);
 		
     	
 	}
