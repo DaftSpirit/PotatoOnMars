@@ -14,8 +14,15 @@ public class PatternList extends ArrayList< ArrayList<String> >{
 		super();
 	}
 	
+	// DUNNO? STOP ME BAISER LA LISTE ORIGINALE PLZ
 	public PatternList(PatternList pl) {
-		super(pl);
+		for(int i = 0 ; i < pl.size() ; i++)
+		{
+			this.add(pl.get(i));
+			for(int j = 0; j < pl.get(i).size(); ++j) {
+				this.get(i).add(pl.get(i).get(j));
+			}
+		}
 	}
 
 	@Override
