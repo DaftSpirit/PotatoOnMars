@@ -33,6 +33,7 @@ public class Sorter {
 	public void sortAndPrint(PatternList pl, int hour, int idxToSort) {
 		this.pl2 = pl;
 		String patternToTest = this.pl2.get(hour).get(idxToSort);
+		System.out.println(patternToTest);
 		this.pl2.get(hour).remove(idxToSort);
 		double[] distances = new double[SaxParameters.steps];
 		

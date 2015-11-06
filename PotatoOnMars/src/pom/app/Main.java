@@ -18,7 +18,7 @@ public class Main {
 		NormalAlphabet na = new NormalAlphabet();
 		SAXProcessor sp = new SAXProcessor();
 		Analyser anal = new Analyser();
-		WordConverter wc = new WordConverter();
+		Sorter so = new Sorter();
 		
 		// read the input file
 		double[] ts = TSProcessor.readFileColumn(SaxParameters.dataFName, 0, 0);
@@ -46,6 +46,8 @@ public class Main {
 		// LISSAGE
 		double[] ts_lisse = anal.medianStraightener5Points(ts);
 		
+		anal.dataWritter(ts_lisse);
+		
 		SAXRecords res_lisse = sp.ts2saxViaWindow(ts_lisse, SaxParameters.slidingWindowSize, SaxParameters.paaSize, 
 			    na.getCuts(SaxParameters.alphabetSize), SaxParameters.nrStrategy, SaxParameters.nThreshold);
 		Set<Integer> index_lisse = res.getIndexes();
@@ -55,7 +57,7 @@ public class Main {
 		System.out.println("\n-----------------------------------------------\n");
 		//TRI / SORTING
 		
-		Sorter so = new Sorter();
+		
 		so.sortAndPrint(pl, 1, 1);
 		
     	
