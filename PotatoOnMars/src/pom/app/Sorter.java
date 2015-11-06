@@ -31,8 +31,8 @@ public class Sorter {
 	 *            : hour to take the tested pattern from
 	 * @author joris
 	 */
-	public void sortAndPrint(PatternList pl, int hour, int idxToSort) {
-		this.pl2 = pl;
+	public int sortAndPrint(PatternList pl, int hour, int idxToSort) {
+		this.pl2 = new PatternList(pl);
 		String patternToTest = this.pl2.get(hour).get(idxToSort);
 		System.out.println(patternToTest);
 		this.pl2.get(hour).remove(idxToSort);
@@ -64,7 +64,7 @@ public class Sorter {
 		int hourSorted = -1;
 		double min = Double.MAX_VALUE;
 		for (int j = 0; j < distances.length; ++j) {	
-			System.out.println(distances[j]);
+			//System.out.println(distances[j]);
 			if (distances[j] < min) {
 				min = distances[j];
 				hourSorted = j;
@@ -74,8 +74,10 @@ public class Sorter {
 		System.out.println("real hour : " + hour + "\n");
 		if (hourSorted == hour) {
 			System.out.println("GG WP !!!");
+			return 0;
 		} else {
 			System.out.println("FAK !! on n'a pas reussi");
+			return -1;
 		}
 
 	}

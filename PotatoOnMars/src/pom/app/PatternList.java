@@ -10,6 +10,14 @@ public class PatternList extends ArrayList< ArrayList<String> >{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	public PatternList() {
+		super();
+	}
+	
+	public PatternList(PatternList pl) {
+		super(pl);
+	}
+
 	@Override
 	public String toString ()
 	{
