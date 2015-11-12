@@ -19,6 +19,7 @@ public class Main {
 		SAXProcessor sp = new SAXProcessor();
 		Analyser anal = new Analyser();
 		Sorter so = new Sorter();
+		LearningTest lt = new LearningTest(so);
 		
 		// read the input file
 		double[] ts = TSProcessor.readFileColumn(SaxParameters.dataFName, 0, 0);
@@ -58,13 +59,30 @@ public class Main {
 		//TRI / SORTING
 		
 		
-		so.sortAndPrint(pl, 0, 0);
-		so.sortAndPrint(pl_lisse, 6, 0);
+		if(so.sortAndPrint(pl, 0, 0)) {
+			System.out.println("GG WP !!!\n");
+		}
+		else {
+			System.out.println("FAK !! on n'a pas reussi\n");
+		}
+		if(so.sortAndPrint(pl_lisse, 6, 0)) {
+			System.out.println("GG WP !!!\n");
+		}
+		else{
+			System.out.println("FAK !! on n'a pas reussi\n");
+		}
 		
 		System.out.println("\n------------------courbAnalyser-------------------\n");
 		
 		anal.courbAnalyser(pl);
 		
+		System.out.println("\n---------------Learning & Percentages-------------\n");
+		
+		System.out.println("\n avec la patternList de base\n");
+		lt.testForPatternList(pl);
+		
+		System.out.println("\n avec la patternList lisse");
+		lt.testForPatternList(pl_lisse);
     	
 	}
 

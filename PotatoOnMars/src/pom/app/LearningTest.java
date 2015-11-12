@@ -24,12 +24,12 @@ public class LearningTest {
 	 * prints the percentage of good sorting
 	 */
 	public void testForPatternList(PatternList pl) {
-		int timesExec = 0;
-		int timesWorked = 0;
+		double timesExec = 0.0;
+		double timesWorked = 0.0;
 		for(int i = 0; i < pl.size(); ++i) {
 			for(int j = 0; j < pl.get(i).size(); ++j) {
-				int test = this.so.sortAndPrint(pl, i, j);
-				if(test == 0) {
+				boolean test = this.so.sortAndPrint(pl, i, j);
+				if(test) {
 					timesWorked++;
 				}
 				timesExec++;

@@ -31,7 +31,7 @@ public class Sorter {
 	 *            : hour to take the tested pattern from
 	 * @author joris
 	 */
-	public int sortAndPrint(PatternList pl, int hour, int idxToSort) {
+	public boolean sortAndPrint(PatternList pl, int hour, int idxToSort) {
 		this.pl2 = new PatternList(pl);
 		String patternToTest = this.pl2.get(hour).get(idxToSort);
 		System.out.println(patternToTest);
@@ -73,11 +73,11 @@ public class Sorter {
 		System.out.println("hour found : " + hourSorted + "\n");
 		System.out.println("real hour : " + hour + "\n");
 		if (hourSorted == hour) {
-			System.out.println("GG WP !!!\n");
-			return 0;
+			//System.out.println("GG WP !!!\n");
+			return true;
 		} else {
-			System.out.println("FAK !! on n'a pas reussi\n");
-			return -1;
+			//System.out.println("FAK !! on n'a pas reussi\n");
+			return false;
 		}
 
 	}
