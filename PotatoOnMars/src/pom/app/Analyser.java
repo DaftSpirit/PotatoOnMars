@@ -95,16 +95,16 @@ public class Analyser {
 	}
 	
 	// SUPERPOSITION DE COURBES + VARIANCE + ECART TYPE
-	public void courbAnalyser (PatternList pl)
+	public void courbAnalyser (DoublePatternList dpl)
 	{
-		System.out.println(pl.get(0).get(0));
-		System.out.println(pl.get(0).get(1));
-		System.out.println(pl.get(0).get(2));
-		double[][] res = new double[SaxParameters.steps][3];
-		for (int i=0 ; i < 20 ; i++)
+		System.out.println(dpl.get(0).get(0)[3]);
+		double[][] res = new double[dpl.size()][3];
+		for (int i=0 ; i < dpl.size() ; i++)
 		{
-			//System.out.println(pl.get(i).get(0));
-			System.out.println(pl.get(i).size());
+			System.out.println(i);
+			res[i][0]=0;
+			res[i][1]=0;
+			res[i][2]=0;
 		}
 	}
 	

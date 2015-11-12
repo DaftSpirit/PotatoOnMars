@@ -41,7 +41,7 @@ public class Main {
 		
 		//patterns convertis en doubles
 		DoublePatternList converted = anal.convertRanks(pl);
-		
+		//System.out.println(converted);
 		System.out.println("\n------------------------------------------------\n");
 			
 		// LISSAGE
@@ -74,15 +74,15 @@ public class Main {
 		
 		System.out.println("\n------------------courbAnalyser-------------------\n");
 		
-		anal.courbAnalyser(pl);
+		anal.courbAnalyser(converted);
 		
 		System.out.println("\n---------------Learning & Percentages-------------\n");
 		
-		System.out.println("\n avec la patternList de base\n");
-		lt.testForPatternList(pl);
-		
-		System.out.println("\n avec la patternList lisse");
-		lt.testForPatternList(pl_lisse);
+//		System.out.println("\n avec la patternList de base\n");
+//		lt.testForPatternList(pl);
+//		
+//		System.out.println("\n avec la patternList lisse");
+//		lt.testForPatternList(pl_lisse);
     	
 	}
 
