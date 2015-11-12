@@ -9,6 +9,22 @@ public class DoublePatternList extends ArrayList<ArrayList<double[]>> {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	public DoublePatternList() {
+		super();
+	}
+	
+	public DoublePatternList(DoublePatternList dpl){
+		for(int i = 0 ; i < dpl.size() ; i++)
+		{
+			this.add(new ArrayList<double[]>());
+		}
+		for(int k = 0; k < this.size(); k++){
+			for(int j = 0; j < dpl.get(k).size(); ++j) {
+				this.get(k).add(dpl.get(k).get(j));
+			}
+		}
+	}
+	
 	@Override
 	public String toString ()
 	{

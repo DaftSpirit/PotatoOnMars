@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class Sorter {
 
 	private PatternList pl2;
+	private DoublePatternList dpl2;
 
 	/**
 	 * @author joris Constructor
@@ -29,6 +30,7 @@ public class Sorter {
 	 *            sort
 	 * @param hour
 	 *            : hour to take the tested pattern from
+	 * @return true if the pattern is correctly sorted
 	 * @author joris
 	 */
 	public boolean sortAndPrint(PatternList pl, int hour, int idxToSort) {
@@ -80,6 +82,19 @@ public class Sorter {
 			return false;
 		}
 
+	}
+	
+	/**
+	 * tries to sort one element of the patternlist
+	 * @param dpl pattern list of double[]
+	 * @param hour hour to sort
+	 * @param idxToSort pattern at hour to sort
+	 * @return true if the pattern is sorted correctly
+	 * @author joris
+	 */
+	public boolean sortDoubles(DoublePatternList dpl, int hour, int idxToSort){
+		
+		return false;
 	}
 
 }
