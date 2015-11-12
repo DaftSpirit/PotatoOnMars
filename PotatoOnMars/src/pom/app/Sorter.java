@@ -73,10 +73,10 @@ public class Sorter {
 		System.out.println("hour found : " + hourSorted + "\n");
 		System.out.println("real hour : " + hour + "\n");
 		if (hourSorted == hour) {
-			System.out.println("GG WP !!!");
+			System.out.println("GG WP !!!\n");
 			return 0;
 		} else {
-			System.out.println("FAK !! on n'a pas reussi");
+			System.out.println("FAK !! on n'a pas reussi\n");
 			return -1;
 		}
 

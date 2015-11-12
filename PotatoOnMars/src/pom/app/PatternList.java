@@ -18,9 +18,11 @@ public class PatternList extends ArrayList< ArrayList<String> >{
 	public PatternList(PatternList pl) {
 		for(int i = 0 ; i < pl.size() ; i++)
 		{
-			this.add(pl.get(i));
-			for(int j = 0; j < pl.get(i).size(); ++j) {
-				this.get(i).add(pl.get(i).get(j));
+			this.add(new ArrayList<String>());
+		}
+		for(int k = 0; k < this.size(); k++){
+			for(int j = 0; j < pl.get(k).size(); ++j) {
+				this.get(k).add(pl.get(k).get(j));
 			}
 		}
 	}

@@ -61,6 +61,8 @@ public class Main {
 		so.sortAndPrint(pl, 0, 0);
 		so.sortAndPrint(pl_lisse, 6, 0);
 		
+		System.out.println("\n------------------courbAnalyser-------------------\n");
+		
 		anal.courbAnalyser(pl);
 		
     	
