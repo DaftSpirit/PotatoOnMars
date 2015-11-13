@@ -7,7 +7,7 @@ package pom.app;
  */
 public class LearningTest {
 
-	private Sorter so;
+	private Sorter so; //wow, much sort
 	
 	/**
 	 * constructs the tester
