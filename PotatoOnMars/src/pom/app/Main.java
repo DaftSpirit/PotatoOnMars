@@ -74,7 +74,7 @@ public class Main {
 		
 		System.out.println("\n------------------courbAnalyser-------------------\n");
 		
-		anal.courbAnalyser(converted);
+		double[][] data = anal.courbAnalyser(ts);
 		
 		System.out.println("\n---------------Learning & Percentages-------------\n");
 		

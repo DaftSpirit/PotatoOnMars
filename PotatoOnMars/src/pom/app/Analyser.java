@@ -95,17 +95,98 @@ public class Analyser {
 	}
 	
 	// SUPERPOSITION DE COURBES + VARIANCE + ECART TYPE
-	public void courbAnalyser (DoublePatternList dpl)
+	public double[][] courbAnalyser (double[] data)
 	{
-		System.out.println(dpl.get(0).get(0)[3]);
-		double[][] res = new double[dpl.size()][3];
-		for (int i=0 ; i < dpl.size() ; i++)
+		// INITIALISATION
+		double[][] res = new double[SaxParameters.steps][5];
+		for (int i = 0 ; i < SaxParameters.steps ; i++)
 		{
-			System.out.println(i);
-			res[i][0]=0;
-			res[i][1]=0;
-			res[i][2]=0;
+			// Min / Max
+			for(int j=0 ; j < 2 ; j++)
+			{
+				res[i][j] = data[i];
+			}
 		}
+		
+		// DONNEES QUI SUIVENT
+		for (int i = SaxParameters.steps ; i < data.length ; i++)
+		{
+			// Min
+			if(res[i%SaxParameters.steps][0] > data[i]) {res[i%SaxParameters.steps][0] = data[i];}
+				
+			// Max
+			if(res[i%SaxParameters.steps][1] < data[i]){res[i%SaxParameters.steps][1] = data[i];}
+			
+		}
+		
+		double moy =  0;
+		int tmp = 1;
+		int cnt = 0;
+		for (int i = 0 ; i < SaxParameters.steps ; i++)
+		{
+			moy = 0;
+			cnt = 0;
+			//System.out.println("----");
+			for(int j = 0 ; j < (int)(data.length/SaxParameters.steps) + tmp ; j++)
+			{
+				if( i >= (int)(data.length%SaxParameters.steps) )
+				{
+					tmp = 0;
+				}
+				//System.out.println(i+j*SaxParameters.steps);
+				//System.out.println(data[i+j*SaxParameters.steps]);
+				moy += data[i+j*SaxParameters.steps];
+				cnt++;
+			}
+			res[i%SaxParameters.steps][2] = moy / cnt;
+			
+			
+		}
+		
+		// VARIANCE : somme (x-xm)^2 / n // EC
+		double xi = 0;
+		tmp = 1;
+		double variance = 0;
+		for (int i = 0 ; i < SaxParameters.steps ; i++)
+		{
+			xi = 0;
+			cnt = 0;
+			for(int j = 0 ; j < (int)(data.length/SaxParameters.steps) + tmp ; j++)
+			{
+				if( i >= (int)(data.length%SaxParameters.steps) )
+				{
+					tmp = 0;
+				}
+				
+				xi += Math.pow(data[i+j*SaxParameters.steps] - res[i%SaxParameters.steps][2], 2);
+				//System.out.println(xi);
+				cnt++;
+			}
+			variance = xi / cnt;
+			res[i%SaxParameters.steps][3] = variance;
+			res[i%SaxParameters.steps][4] = Math.sqrt(variance);
+		}
+
+		// PRINT
+		System.out.println("		MIN		MAX			MOY		VARIANCE		EC");
+		for(int k =0 ; k < res.length ; k++)
+		{
+			
+			System.out.print("h : " + k + " [ ");
+			System.out.print(res[k][0]);
+			System.out.print("  ");
+			System.out.print(res[k][1]);
+			System.out.print("  ");
+			System.out.print(res[k][2]);
+			System.out.print("  ");
+			System.out.print(res[k][3]);
+			System.out.print("  ");
+			System.out.print(res[k][4]);
+			System.out.println(" ]");
+		}
+		
+		return res;
+		
 	}
 	
 	
