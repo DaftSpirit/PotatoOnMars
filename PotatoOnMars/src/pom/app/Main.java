@@ -42,12 +42,10 @@ public class Main {
 		//patterns convertis en doubles
 		DoublePatternList converted = anal.convertRanks(pl);
 		System.out.println(converted);
-		//System.out.println(converted);
 		System.out.println("\n------------------------------------------------\n");
 			
 		// LISSAGE
 		double[] ts_lisse = anal.medianStraightener5Points(ts);
-		
 		anal.dataWritter(ts_lisse,"data/48 donnees lissses.txt");
 		
 		SAXRecords res_lisse = sp.ts2saxViaWindow(ts_lisse, SaxParameters.slidingWindowSize, SaxParameters.paaSize, 
@@ -57,9 +55,8 @@ public class Main {
 		PatternList pl_lisse = anal.makeRanksByHour(res_lisse, index_lisse); 
 		
 		System.out.println("\n-----------------------------------------------\n");
+		
 		//TRI / SORTING
-		
-		
 		if(so.sortAndPrint(pl, 0, 0)) {
 			System.out.println("GG WP !!!\n");
 		}
