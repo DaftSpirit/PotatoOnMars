@@ -65,8 +65,8 @@ public class Sorter {
 		 */
 		int hourSorted = -1;
 		double min = Double.MAX_VALUE;
-		for (int j = 0; j < distances.length; ++j) {	
-			//System.out.println(distances[j]);
+		for (int j = 0; j < distances.length; ++j) {
+			// System.out.println(distances[j]);
 			if (distances[j] < min) {
 				min = distances[j];
 				hourSorted = j;
@@ -75,26 +75,74 @@ public class Sorter {
 		System.out.println("hour found : " + hourSorted + "\n");
 		System.out.println("real hour : " + hour + "\n");
 		if (hourSorted == hour) {
-			//System.out.println("GG WP !!!\n");
+			// System.out.println("GG WP !!!\n");
 			return true;
 		} else {
-			//System.out.println("FAK !! on n'a pas reussi\n");
+			// System.out.println("FAK !! on n'a pas reussi\n");
 			return false;
 		}
 
 	}
-	
+
 	/**
 	 * tries to sort one element of the patternlist
-	 * @param dpl pattern list of double[]
-	 * @param hour hour to sort
-	 * @param idxToSort pattern at hour to sort
+	 * 
+	 * @param dpl
+	 *            pattern list of double[]
+	 * @param hour
+	 *            hour to sort
+	 * @param idxToSort
+	 *            pattern at hour to sort
 	 * @return true if the pattern is sorted correctly
 	 * @author joris
 	 */
-	public boolean sortDoubles(DoublePatternList dpl, int hour, int idxToSort){
-		
-		return false;
+	public boolean sortDoubles(DoublePatternList dpl, int hour, int idxToSort) {
+		this.dpl2 = new DoublePatternList(dpl);
+		double[] patternToTest = this.dpl2.get(hour).get(idxToSort);
+		this.dpl2.get(hour).remove(idxToSort);
+		double[] distances = new double[SaxParameters.steps];
+
+		/*
+		 * computes the distances between the pattern to test and all other
+		 * words
+		 */
+		int idx = 0;
+		double distTmp = 0.0;
+		for (ArrayList<double[]> hours : dpl) {
+			int numberOfWords = 0;
+			for (double[] pattern : hours) {
+				for (int i = 0; i < patternToTest.length; i++) {
+					double currentDouble = patternToTest[i];
+					distTmp += Distances.distanceToDouble(currentDouble,
+							pattern[i]);
+					numberOfWords++;
+				}
+			}
+			distances[idx] = distTmp / numberOfWords;
+			distTmp = 0.0;
+			numberOfWords = 0;
+			idx++;
+		}
+
+		/*
+		 * takes the smallest distance and put the patterToTest at the good
+		 * place
+		 */
+		int hourSorted = -1;
+		double min = Double.MAX_VALUE;
+		for (int j = 0; j < distances.length; ++j) {
+			if (distances[j] < min) {
+				min = distances[j];
+				hourSorted = j;
+			}
+		}
+		System.out.println("hour found : " + hourSorted + "\n");
+		System.out.println("real hour : " + hour + "\n");
+		if (hourSorted == hour) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }
