@@ -36,7 +36,7 @@ public class LearningTest {
 			}
 		}
 		double percentage = (timesWorked / timesExec) * 100.0;
-		System.out.println("times worked : " + percentage);
+		System.out.println("times worked : " + percentage + "%");
 	}
 	
 	/**
@@ -58,7 +58,7 @@ public class LearningTest {
 			}
 		}
 		double percentage = (timesWorked / timesExec) * 100.0;
-		System.out.println("times worked : " + percentage);
+		System.out.println("times worked : " + percentage + "%");
 	}
 	
 	

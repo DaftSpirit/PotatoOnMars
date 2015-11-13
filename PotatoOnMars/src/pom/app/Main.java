@@ -79,11 +79,14 @@ public class Main {
 		
 		System.out.println("\n---------------Learning & Percentages-------------\n");
 		
-//		System.out.println("\n avec la patternList de base\n");
-//		lt.testForPatternList(pl);
-//		
-//		System.out.println("\n avec la patternList lisse");
-//		lt.testForPatternList(pl_lisse);
+		System.out.println("\n avec la patternList de base\n");
+		lt.testForPatternList(pl);
+		
+		System.out.println("\n avec la patternList lisse");
+		lt.testForPatternList(pl_lisse);
+		
+		System.out.println("\n avec une DoublePatternList");
+		lt.testForDoublePatternList(converted);
     	
 	}
 

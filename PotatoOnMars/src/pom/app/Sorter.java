@@ -36,7 +36,7 @@ public class Sorter {
 	public boolean sortAndPrint(PatternList pl, int hour, int idxToSort) {
 		this.pl2 = new PatternList(pl);
 		String patternToTest = this.pl2.get(hour).get(idxToSort);
-		System.out.println(patternToTest);
+//		System.out.println(patternToTest);
 		this.pl2.get(hour).remove(idxToSort);
 		double[] distances = new double[SaxParameters.steps];
 
@@ -72,8 +72,8 @@ public class Sorter {
 				hourSorted = j;
 			}
 		}
-		System.out.println("hour found : " + hourSorted + "\n");
-		System.out.println("real hour : " + hour + "\n");
+//		System.out.println("hour found : " + hourSorted + "\n");
+//		System.out.println("real hour : " + hour + "\n");
 		if (hourSorted == hour) {
 			// System.out.println("GG WP !!!\n");
 			return true;
@@ -136,8 +136,8 @@ public class Sorter {
 				hourSorted = j;
 			}
 		}
-		System.out.println("hour found : " + hourSorted + "\n");
-		System.out.println("real hour : " + hour + "\n");
+//		System.out.println("hour found : " + hourSorted + "\n");
+//		System.out.println("real hour : " + hour + "\n");
 		if (hourSorted == hour) {
 			return true;
 		} else {
