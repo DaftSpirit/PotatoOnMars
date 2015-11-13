@@ -48,7 +48,7 @@ public class Main {
 		// LISSAGE
 		double[] ts_lisse = anal.medianStraightener5Points(ts);
 		
-		anal.dataWritter(ts_lisse);
+		anal.dataWritter(ts_lisse,"data/48 donnees lissses.txt");
 		
 		SAXRecords res_lisse = sp.ts2saxViaWindow(ts_lisse, SaxParameters.slidingWindowSize, SaxParameters.paaSize, 
 			    na.getCuts(SaxParameters.alphabetSize), SaxParameters.nrStrategy, SaxParameters.nThreshold);

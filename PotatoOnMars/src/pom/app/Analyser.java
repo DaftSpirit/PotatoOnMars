@@ -8,11 +8,20 @@ import java.util.Set;
 import net.seninp.jmotif.sax.datastructure.SAXRecord;
 import net.seninp.jmotif.sax.datastructure.SAXRecords;
 
+/**
+ * Class that analyse stuff for you, use this as a tool
+ * @author Karuskrokro
+ *
+ */
 public class Analyser {
-
-	public void printRecurrentPatterns( SAXRecords res , int nb ){
-		// print best "nb" motifs
-		ArrayList<SAXRecord> motifs = res.getMotifs(nb);
+	
+	/**
+	 * Print best nb patterns
+	 * @param rec : SAXRecord object to use
+	 * @param nb : how many patterns
+	 */
+	public void printRecurrentPatterns( SAXRecords rec , int nb ){
+		ArrayList<SAXRecord> motifs = rec.getMotifs(nb);
 		for ( int i = 1; i <= nb; i++ )
 		{
 			SAXRecord topMotif = motifs.get(i-1);
@@ -21,20 +30,30 @@ public class Analyser {
 		}
 	}
 	
-	
-	public PatternList makeRanksByHour( SAXRecords res, Set<Integer> index ){
+	/**
+	 * Returns a PatternList with the different payloads data in it. The PatternList is sorted by hour.
+	 * @param rec : SAXRecord object to use
+	 * @param index : The SAXRecord's index
+	 * @return
+	 */
+	public PatternList makeRanksByHour( SAXRecords rec, Set<Integer> index ){
 		PatternList ranks = new PatternList();
 		for(int i=0; i < SaxParameters.steps ; i++)
 		{
 			ranks.add(new ArrayList<String>());
 		}
 		for (Integer idx : index) {
-			ranks.get(idx%SaxParameters.steps).add(String.valueOf(res.getByIndex(idx).getPayload()));
+			ranks.get(idx%SaxParameters.steps).add(String.valueOf(rec.getByIndex(idx).getPayload()));
 		}
     	System.out.println(ranks);
     	return ranks;
 	}
 	
+	/**
+	 * Convert a PatternList in a DoublePatternList
+	 * @param pl : PatternList to use
+	 * @return : DoublePatternList, same as a PatternList but with doubles in it instead of Strings
+	 */
 	public DoublePatternList convertRanks(PatternList pl) {
 		WordConverter wc = new WordConverter();
 		DoublePatternList res = new DoublePatternList();
@@ -47,7 +66,6 @@ public class Analyser {
 		for(int i = 0; i < pl.size(); i++) {
 			for(int j = 0; j < pl.get(i).size(); j++) {
 				double[] tmp;
-				//System.out.println(pl.get(i).get(j));
 				tmp = wc.converter(pl.get(i).get(j));
 				res.get(i).add(tmp);
 			}
@@ -55,6 +73,11 @@ public class Analyser {
 		return res;
 	}
 	
+	/**
+	 * Simple 5 points median straghtener
+	 * @param data : data to straighten
+	 * @return data straightened
+	 */
 	public double[] medianStraightener5Points(double[] data)
 	{
 		double [] res = new double[data.length];
@@ -69,12 +92,15 @@ public class Analyser {
 		return res;
 	}
 	
-	public void dataWritter(double[] data)
+	/**
+	 * Writes a double's array into a file.
+	 * @param data data to read
+	 */
+	public void dataWritter(double[] data,String filename)
 	{
 		try
 		{
-		    FileWriter fw = new FileWriter ("data/48 donnees lissses.txt");
-		 
+		    FileWriter fw = new FileWriter (filename);
 		    for (double d : data)
 		    {
 		        fw.write (String.valueOf (d));
@@ -84,13 +110,16 @@ public class Analyser {
 		}
 		catch (IOException exception)
 		{
-		    System.out.println ("Erreur lors de la lecture : " + exception.getMessage());
+		    System.out.println ("Data Error");
 		}
 	}
+	
 	/**
-	 * 
+	 * Calculate the minimum / maximum / med / variance / EC of an double's array. The size of the array depends of the SaxParameters's Steps
+	 * and all the results are calculated for each hour depending also on the sax params's steps
 	 * @param data
-	 * @return
+	 * @return double[SawParameters.Steps][5]. double[x][0] -> minimums. double[x][1] -> maximums
+	 * double[x][2] -> all the medians. double[x][3] -> variance. double[x][4] -> EC 
 	 */
 	public double[][] courbAnalyser (double[] data)
 	{
@@ -111,7 +140,6 @@ public class Analyser {
 			// Max
 			if(res[i%SaxParameters.steps][1] < data[i]){res[i%SaxParameters.steps][1] = data[i];}
 		}
-		
 		
 		for (int i = 0 ; i < SaxParameters.steps ; i++)
 		{
@@ -159,6 +187,5 @@ public class Analyser {
 		}
 		return res;
 	}
-	
-	
+
 }
