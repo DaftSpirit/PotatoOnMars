@@ -38,6 +38,36 @@ public class WindowAnalyser {
 			DoublePatternList convertedBad = anal.convertRanks(plBad);
 			DoublePatternList converted = anal.convertRanks(pl);
 			
+			for(int i = 0; i < plBad.size(); ++i) {
+				for(String patternToTest : plBad.get(i)) {
+					double color = so.stringPlacedGood(pl, i, patternToTest, 0.9);
+					if (color == 0.0){
+						System.out.println("green");
+					}
+					else if (color == Double.MAX_VALUE) {
+						System.out.println("/!\\ RED ALERT /!\\");
+					}
+					else {
+						System.out.println("ORANGE");
+					}
+				}
+			}
+			
+			for(int i = 0; i < convertedBad.size(); ++i) {
+				for(double[] patternToTest : convertedBad.get(i)) {
+					double color = so.doublePlacedGood(converted, i, patternToTest, 0.9);
+					if (color == 0.0){
+						System.out.println("green");
+					}
+					else if (color == Double.MAX_VALUE) {
+						System.out.println("/!\\ RED ALERT /!\\");
+					}
+					else {
+						System.out.println("ORANGE");
+					}
+				}
+			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (SAXException e) {
