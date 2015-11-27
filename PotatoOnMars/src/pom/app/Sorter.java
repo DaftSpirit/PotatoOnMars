@@ -21,7 +21,7 @@ public class Sorter {
 
 	/**
 	 * takes one pattern out of the list and tries to reput it at the same
-	 * place. prints ont sysou the result
+	 * place.
 	 * 
 	 * @param pl
 	 *            patternList of sorted patterns
@@ -36,7 +36,7 @@ public class Sorter {
 	public boolean sortAndPrint(PatternList pl, int hour, int idxToSort) {
 		this.pl2 = new PatternList(pl);
 		String patternToTest = this.pl2.get(hour).get(idxToSort);
-//		System.out.println(patternToTest);
+		// System.out.println(patternToTest);
 		this.pl2.get(hour).remove(idxToSort);
 		double[] distances = new double[SaxParameters.steps];
 
@@ -72,8 +72,17 @@ public class Sorter {
 				hourSorted = j;
 			}
 		}
-//		System.out.println("hour found : " + hourSorted + "\n");
-//		System.out.println("real hour : " + hour + "\n");
+
+		double max = Double.MIN_VALUE;
+		for (int k = 0; k < distances.length; ++k) {
+			if (distances[k] > max) {
+				max = distances[k];
+			}
+		}
+		
+		System.out.println("le min : " + min);
+		System.out.println("le max : " + max);
+		
 		if (hourSorted == hour) {
 			// System.out.println("GG WP !!!\n");
 			return true;
@@ -136,12 +145,166 @@ public class Sorter {
 				hourSorted = j;
 			}
 		}
-//		System.out.println("hour found : " + hourSorted + "\n");
-//		System.out.println("real hour : " + hour + "\n");
+
+		double max = Double.MIN_VALUE;
+		for (int k = 0; k < distances.length; ++k) {
+			if (distances[k] > max) {
+				max = distances[k];
+			}
+		}
+		
+		System.out.println("le min : " + min);
+		System.out.println("le max : " + max);
+		
 		if (hourSorted == hour) {
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	/**
+	 * tries to places an unknown pattern (a string) at the good place
+	 * 
+	 * @param pl
+	 *            : the list of patterns learned (strings)
+	 * @param hour
+	 *            : the hour of the pattern to test (for comparison)
+	 * @param pattern
+	 *            : the pattern to test (a string)
+	 * @param thresold
+	 *            : the limit of the distance to be good even if the pattern is
+	 *            well placed
+	 * @return true if the pattern is well placed
+	 * @author joris
+	 */
+	public double stringPlacedGood(PatternList pl, int hour,
+			String patternToTest, double thresold) {
+		double[] distances = new double[SaxParameters.steps];
+
+		/* computes the distances between every hour */
+		int idx = 0;
+		double distTmp = 0.0;
+		for (ArrayList<String> hours : pl) {
+			int numberOfWords = 0;
+			for (String pattern : hours) {
+				for (int i = 0; i < patternToTest.length(); ++i) {
+					char currentChar = patternToTest.charAt(i);
+					distTmp += Distances.distanceToLetter(currentChar,
+							pattern.charAt(i));
+					numberOfWords++;
+				}
+			}
+			distances[idx] = distTmp / numberOfWords;
+			distTmp = 0.0;
+			numberOfWords = 0;
+			idx++;
+		}
+
+		/*
+		 * takes the smallest distance and put the patternToTest at the good
+		 * place
+		 */
+		int hourSorted = -1;
+		double min = Double.MAX_VALUE;
+		for (int j = 0; j < distances.length; ++j) {
+			// System.out.println(distances[j]);
+			if (distances[j] < min) {
+				min = distances[j];
+				hourSorted = j;
+			}
+		}
+
+		// double max = Double.MIN_VALUE;
+		// for (int k = 0; k < distances.length; ++k) {
+		// if (distances[k] > max) {
+		// max = distances[k];
+		// }
+		// }
+
+		if ((hourSorted == hour)) {
+			if(min > thresold){
+				return min;
+			}
+			else {
+				return 0.0;
+			}
+		} else {
+			return Double.MAX_VALUE;
+		}
+	}
+
+	/**
+	 * tries to places an unknown pattern (an array of doubles) at the good
+	 * place
+	 * 
+	 * @param dpl
+	 *            : the list of patterns learned (arrays of doubles)
+	 * @param hour
+	 *            : the hour of the pattern to test (for comparison)
+	 * @param pattern
+	 *            : the pattern to test (an array of doubles)
+	 * @param thresold
+	 *            : the limit of the distance to be good even if the pattern is
+	 *            well placed
+	 * @return true if the pattern is well placed
+	 * @author joris
+	 */
+	public double doublePlacedGood(DoublePatternList dpl, int hour,
+			double[] patternToTest, double thresold) {
+		double[] distances = new double[SaxParameters.steps];
+
+		/*
+		 * computes the distances between the pattern to test and all other
+		 * words
+		 */
+		int idx = 0;
+		double distTmp = 0.0;
+		for (ArrayList<double[]> hours : dpl) {
+			int numberOfWords = 0;
+			for (double[] pattern : hours) {
+				for (int i = 0; i < patternToTest.length; i++) {
+					double currentDouble = patternToTest[i];
+					distTmp += Distances.distanceToDouble(currentDouble,
+							pattern[i]);
+					numberOfWords++;
+				}
+			}
+			distances[idx] = distTmp / numberOfWords;
+			distTmp = 0.0;
+			numberOfWords = 0;
+			idx++;
+		}
+
+		/*
+		 * takes the smallest distance and put the patterToTest at the good
+		 * place
+		 */
+		int hourSorted = -1;
+		double min = Double.MAX_VALUE;
+		for (int j = 0; j < distances.length; ++j) {
+			if (distances[j] < min) {
+				min = distances[j];
+				hourSorted = j;
+			}
+		}
+
+		// double max = Double.MIN_VALUE;
+		// for (int k = 0; k < distances.length; ++k) {
+		// if (distances[k] > max) {
+		// max = distances[k];
+		// }
+		// }
+
+		if ((hourSorted == hour)) {
+			if(min > thresold){
+				return min;
+			}
+			else {
+				return 0.0;
+			}
+		} else {
+			return Double.MAX_VALUE;
 		}
 	}
 
