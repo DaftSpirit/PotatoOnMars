@@ -58,16 +58,16 @@ public class Main {
 		
 		//TRI / SORTING
 		if(so.sortAndPrint(pl, 0, 0)) {
-			System.out.println("GG WP !!!\n");
+			System.out.println("Success !!!\n");
 		}
 		else {
-			System.out.println("FAK !! on n'a pas reussi\n");
+			System.out.println("Failure !!\n");
 		}
 		if(so.sortAndPrint(pl_lisse, 6, 0)) {
-			System.out.println("GG WP !!!\n");
+			System.out.println("Success !!!\n");
 		}
 		else{
-			System.out.println("FAK !! on n'a pas reussi\n");
+			System.out.println("Failure !!\n");
 		}
 		
 		System.out.println("\n------------------courbAnalyser-------------------\n");
@@ -84,7 +84,15 @@ public class Main {
 		
 		System.out.println("\n avec une DoublePatternList");
 		lt.testForDoublePatternList(converted);
-    	
+    	// loi normale de probabilité euclidienne (utilisation de la moyenne et écart type pour trouver la probabilité d'appartenance au paquet 18h)
+		// apprentissage sur des données propres
+		// courbe appliquant la loi de probabilité de chaque point (pic sur un donnée anormale)
+		// fenetre pour le comportement
+		// idem pour les fenetres, analyser l'écart type (meme si elle est bien classée) car il peut etre trop grand quand meme)
+		// courbe de résultats, avec un seuil qui dit ce qu'es une anomalie ou non (fenetrée)
+		
+		
+		
 	}
 
 }
