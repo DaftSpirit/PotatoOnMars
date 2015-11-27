@@ -91,29 +91,33 @@ public class Main {
 		// idem pour les fenetres, analyser l'écart type (meme si elle est bien classée) car il peut etre trop grand quand meme)
 		// courbe de résultats, avec un seuil qui dit ce qu'es une anomalie ou non (fenetrée)
 		
+		System.out.println("\n---------------Gaussian distribution-------------\n");
+		
 		double test = 1.5;
 		double tab[] = new double[20];
 		double tests[] = {1.8,1.9,1.8,1.8,1.7,1.9,1.8,2.0,2.1,2.3,2.4,2.1,2.0,2.3,2.2,2.1,4.0,1.9,1.8,2.3}; // H = 5
-		System.out.println("\nLoi de probabilité\n");
+		System.out.println("\nLoi de probabilité de l'heure 5\n");
 		
 		for(int i = 0; i < tests.length ; i++)
 		{
 			System.out.println(anal.normalLaw(test, 0.1730, 1.9923)); // loi gaussienne
 			test = test + 0.1;
-			
-			tab[i] = anal.normalLaw(tests[i], 0.1730, 1.9923);
-			if (tab[i] > 1) tab[i] = 1;
-			tab[i] = 1 - tab[i];
 		}
 		
-		System.out.println("\n-------------------------\n");
-		System.out.println("% de classement ?");
-		
+		System.out.println("\nRépartition du jeu de données\n");
 		for(int i = 0; i < tests.length ; i++)
 		{
+			tab[i] = anal.normalLaw(tests[i], 0.1730, 1.9923);
 			System.out.println(tab[i]);
 		}
 		
+		System.out.println("\n% de chance d'appartenance ?\n");
+		for(int i = 0; i < tests.length ; i++)
+		{
+			if (tab[i] > 1) tab[i] = 1;
+			tab[i] = 1 - tab[i];
+			System.out.println(tab[i]);
+		}
 		
 	}
 
