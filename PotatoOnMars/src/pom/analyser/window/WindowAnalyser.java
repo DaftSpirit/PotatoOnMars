@@ -55,7 +55,7 @@ public class WindowAnalyser {
 			
 			for(int i = 0; i < convertedBad.size(); ++i) {
 				for(double[] patternToTest : convertedBad.get(i)) {
-					double color = so.doublePlacedGood(converted, i, patternToTest, 0.9);
+					double color = so.doublePlacedGood(converted, i, patternToTest, 1.3);
 					if (color == 0.0){
 						System.out.println("green");
 					}
