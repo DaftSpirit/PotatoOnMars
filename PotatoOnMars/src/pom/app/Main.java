@@ -95,8 +95,8 @@ public class Main {
 		
 		double test = 1.5;
 		double tab[] = new double[20];
-		double tests[] = {1.8,1.9,1.8,1.8,1.7,1.9,1.8,2.0,2.1,2.3,2.4,2.1,2.0,2.3,2.2,2.1,4.0,1.9,1.8,2.3}; // H = 5
-		System.out.println("\nLoi de probabilité de l'heure 5\n");
+		double tests[] = {1.8,1.9,1.8,1.8,1.7,1.9,1.8,2.0,2.1,2.3,2.4,2.1,2.0,2.3,2.2,2.1,4.0,1.9,1.8,2.3}; // H = 6
+		System.out.println("\nLoi de probabilité de l'heure 6\n");
 		
 		for(int i = 0; i < tests.length ; i++)
 		{
