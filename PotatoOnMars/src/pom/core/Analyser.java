@@ -1,10 +1,14 @@
-package pom.app;
+package pom.core;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Set;
 
+import pom.util.DoublePatternList;
+import pom.util.PatternList;
+import pom.util.SaxParameters;
+import pom.util.WordConverter;
 import net.seninp.jmotif.sax.datastructure.SAXRecord;
 import net.seninp.jmotif.sax.datastructure.SAXRecords;
 

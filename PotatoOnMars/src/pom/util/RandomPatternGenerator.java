@@ -1,4 +1,4 @@
-package pom.app;
+package pom.util;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -35,8 +35,8 @@ public class RandomPatternGenerator {
 	
 	public void noise(int nbPatterns){
 		int target = (int)(1+ nbPatterns*Math.random());
-		System.out.println("Semaine compliquée : " + target);
-		for( int i = 1; i < _PATTERN_SIZE_ - 2 ; i++) // +1 / - 1 -> Les pics ne sont pas affectés
+		System.out.println("Semaine compliquï¿½e : " + target);
+		for( int i = 1; i < _PATTERN_SIZE_ - 2 ; i++) // +1 / - 1 -> Les pics ne sont pas affectï¿½s
 		{
 			array.set(target * _PATTERN_SIZE_ + i, array.get(target * _PATTERN_SIZE_ + i) + Math.random()+1); // ajout du rdm
 		}

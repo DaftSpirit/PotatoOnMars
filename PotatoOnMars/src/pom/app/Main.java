@@ -3,6 +3,12 @@ package pom.app;
 import java.io.IOException;
 import java.util.Set;
 
+import pom.core.Analyser;
+import pom.core.LearningTest;
+import pom.core.Sorter;
+import pom.util.DoublePatternList;
+import pom.util.PatternList;
+import pom.util.SaxParameters;
 import net.seninp.jmotif.sax.SAXException;
 import net.seninp.jmotif.sax.SAXProcessor;
 import net.seninp.jmotif.sax.TSProcessor;

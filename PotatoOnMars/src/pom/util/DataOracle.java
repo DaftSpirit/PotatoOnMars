@@ -1,4 +1,4 @@
-package pom.app;
+package pom.util;
 
 /**
  * predicts the future data

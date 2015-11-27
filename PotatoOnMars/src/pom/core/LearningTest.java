@@ -1,4 +1,7 @@
-package pom.app;
+package pom.core;
+
+import pom.util.DoublePatternList;
+import pom.util.PatternList;
 
 /**
  * percentage of good sorting

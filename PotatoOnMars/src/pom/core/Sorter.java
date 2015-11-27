@@ -1,6 +1,11 @@
-package pom.app;
+package pom.core;
 
 import java.util.ArrayList;
+
+import pom.util.Distances;
+import pom.util.DoublePatternList;
+import pom.util.PatternList;
+import pom.util.SaxParameters;
 
 /**
  * takes one element from the ranks and tries to sort it at the good place

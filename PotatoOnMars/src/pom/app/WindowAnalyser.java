@@ -1,4 +1,4 @@
-package pom.analyser.window;
+package pom.app;
 
 import java.io.IOException;
 import java.util.Set;
@@ -9,6 +9,11 @@ import net.seninp.jmotif.sax.TSProcessor;
 import net.seninp.jmotif.sax.alphabet.NormalAlphabet;
 import net.seninp.jmotif.sax.datastructure.SAXRecords;
 import pom.app.*;
+import pom.core.Analyser;
+import pom.core.Sorter;
+import pom.util.DoublePatternList;
+import pom.util.PatternList;
+import pom.util.SaxParameters;
 
 public class WindowAnalyser {
 
