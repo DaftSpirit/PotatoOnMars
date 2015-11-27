@@ -187,5 +187,14 @@ public class Analyser {
 		}
 		return res;
 	}
+	
+	public double normalLaw (double value, double ec, double moy)
+	{
+		double res = 0;
+		res = ( 1 / (ec * Math.sqrt(2*Math.PI))) * Math.exp( (-1.0/2.0) * Math.pow(((value - moy)/ec), 2)); // loi normale ?
+		return res;
+	}
+	
+	
 
 }
