@@ -111,11 +111,11 @@ public class Main {
 			System.out.println(tab[i]);
 		}
 		
-		System.out.println("\n% de chance d'appartenance ?\n");
+		System.out.println("\n% de chance d'anomalie ?\n");
 		for(int i = 0; i < tests.length ; i++)
 		{
 			if (tab[i] > 1) tab[i] = 1;
-			tab[i] = 1 - tab[i];
+			tab[i] = (1 - tab[i])*100;
 			System.out.println(tab[i]);
 		}
 		
