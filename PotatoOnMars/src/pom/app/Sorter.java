@@ -80,8 +80,8 @@ public class Sorter {
 			}
 		}
 		
-		System.out.println("le min : " + min);
-		System.out.println("le max : " + max);
+//		System.out.println("le min : " + min);
+//		System.out.println("le max : " + max);
 		
 		if (hourSorted == hour) {
 			// System.out.println("GG WP !!!\n");
@@ -153,8 +153,8 @@ public class Sorter {
 			}
 		}
 		
-		System.out.println("le min : " + min);
-		System.out.println("le max : " + max);
+//		System.out.println("le min : " + min);
+//		System.out.println("le max : " + max);
 		
 		if (hourSorted == hour) {
 			return true;
