@@ -36,13 +36,17 @@ public class WindowAnalyser {
 			Set<Integer> indexBad = resBad.getIndexes();
 			Set<Integer> index = res.getIndexes();
 			
+			System.out.println("------------------\n");
 			PatternList plBad = anal.makeRanksByHour(resBad, indexBad); 
+			System.out.println("------------------\n");
 			PatternList pl = anal.makeRanksByHour(res, index);
 			
 			DoublePatternList convertedBad = anal.convertRanks(plBad);
 			DoublePatternList converted = anal.convertRanks(pl);
 			
 			for(int i = 0; i < plBad.size(); ++i) {
+				System.out.println("\n Hour : " + i);
+				System.out.println("------------------\n");
 				for(String patternToTest : plBad.get(i)) {
 					double color = so.stringPlacedGood(pl, i, patternToTest, 0.9);
 					if (color == 0.0){
