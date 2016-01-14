@@ -166,10 +166,13 @@ public class Analyser {
 			for(int j = 0 ; j < (int)(data.length/SaxParameters.steps) + tmp ; j++)
 			{
 				if( i >= (int)(data.length%SaxParameters.steps) ){tmp = 0;}
+				//double diff = res[i%SaxParameters.steps][2] - data[i+j*SaxParameters.steps];
+				
 				xi += Math.pow(data[i+j*SaxParameters.steps] - res[i%SaxParameters.steps][2], 2);
 				cnt++;
 			}
-			variance = xi / cnt;
+			variance = xi ;/// cnt;
+			
 			res[i%SaxParameters.steps][3] = variance;
 			res[i%SaxParameters.steps][4] = Math.sqrt(variance);
 		}
@@ -194,9 +197,12 @@ public class Analyser {
 	
 	public double normalLaw (double value, double ec, double moy)
 	{
-		double res = 0;
-		res = ( 1 / (ec * Math.sqrt(2*Math.PI))) * Math.exp( (-1.0/2.0) * Math.pow(((value - moy)/ec), 2)); // loi normale ?
-		return res;
+		double r = 1/(ec*Math.sqrt(2*Math.PI));
+		double u = Math.exp(-.5*Math.pow(((value - moy)/ec),2));
+		return r*u;
+		
+		//res = ( 1 / (ec * Math.sqrt(2*Math.PI))) * Math.exp( -.5 * Math.pow(((value - moy)/ec), 2)); // loi normale ?
+		//return res;
 	}
 	
 	

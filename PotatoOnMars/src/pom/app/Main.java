@@ -101,7 +101,7 @@ public class Main {
 		System.out.println("\n---------------Gaussian distribution-------------\n");
 		
 		double test = 1.5;
-		int precision = 20;
+		double precision = 10;
 		double tab[] = new double[20];
 		//double tests[] = {1.8,1.9,1.8,1.8,1.7,1.9,1.8,2.0,2.1,2.3,2.4,2.1,2.0,2.3,2.2,2.1,4.0,1.9,1.8,2.3}; // H = 6
 		
@@ -109,12 +109,10 @@ public class Main {
 		{
 			System.out.println("\nLoi de probabilité de l'heure "+j+"\n");
 			System.out.println("========================================");
-			for(int i = 0; i < precision ; i++)
+			for(double i = 0; i < precision ; i += 0.2)
 			{
-				System.out.println(anal.normalLaw(test, data[j][4], data[j][2])); // loi gaussiennes (v,ec,moy)
-				test = test + 0.1;
+				System.out.println((int)i + " - " + anal.normalLaw(i, data[j][4], data[j][2])); // loi gaussiennes (v,ec,moy)
 			}
-			test = 1.5;
 			
 			System.out.println("\nJeu de données h = "+j+"\n"); // Passage des données
 			for(int i = 0; i < 10 ; i++) // 240 données ? 10 patterns ?
@@ -122,7 +120,7 @@ public class Main {
 				System.out.println(corrupted_data[i*SaxParameters.slidingWindowSize+j]);
 			}
 			
-			System.out.println("\nRépartition du jeu de données h = "+j+"\n"); // Passage des données
+			System.out.println("\nRépartition du jeu de données sur la gaussienne h = "+j+"\n"); // Passage des données
 			for(int i = 0; i < 10 ; i++) // 240 données ? 10 patterns ?
 			{
 				tab[i] = anal.normalLaw(corrupted_data[i*SaxParameters.slidingWindowSize+j], data[j][4], data[j][2]);
@@ -141,8 +139,12 @@ public class Main {
 
 			
 		}
+
+		
 		
 		
 	}
+	
+	
 
 }
