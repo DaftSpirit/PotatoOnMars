@@ -1,8 +1,9 @@
 package pom.util;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PatternList extends ArrayList< ArrayList<String> >{
+public class PatternList extends ArrayList< ArrayList<String> > implements Serializable{
 	
 	
 	/**
