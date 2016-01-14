@@ -36,41 +36,45 @@ public class WindowAnalyser {
 			Set<Integer> indexBad = resBad.getIndexes();
 			Set<Integer> index = res.getIndexes();
 			
+			System.out.println("------------------\n");
 			PatternList plBad = anal.makeRanksByHour(resBad, indexBad); 
+			System.out.println("------------------\n");
 			PatternList pl = anal.makeRanksByHour(res, index);
 			
 			DoublePatternList convertedBad = anal.convertRanks(plBad);
 			DoublePatternList converted = anal.convertRanks(pl);
 			
 			for(int i = 0; i < plBad.size(); ++i) {
+				System.out.println("\n Hour : " + i);
+				System.out.println("------------------\n");
 				for(String patternToTest : plBad.get(i)) {
 					double color = so.stringPlacedGood(pl, i, patternToTest, 0.9);
 					if (color == 0.0){
-						System.out.println("green");
+						System.out.println("No anomalies");
 					}
 					else if (color == Double.MAX_VALUE) {
-						System.out.println("/!\\ RED ALERT /!\\");
+						System.out.println("/!\\ There is a big anomaly /!\\");
 					}
 					else {
-						System.out.println("ORANGE");
+						System.out.println("There is a small anomaly");
 					}
 				}
 			}
 			
-			for(int i = 0; i < convertedBad.size(); ++i) {
-				for(double[] patternToTest : convertedBad.get(i)) {
-					double color = so.doublePlacedGood(converted, i, patternToTest, 1.3);
-					if (color == 0.0){
-						System.out.println("green");
-					}
-					else if (color == Double.MAX_VALUE) {
-						System.out.println("/!\\ RED ALERT /!\\");
-					}
-					else {
-						System.out.println("ORANGE");
-					}
-				}
-			}
+//			for(int i = 0; i < convertedBad.size(); ++i) {
+//				for(double[] patternToTest : convertedBad.get(i)) {
+//					double color = so.doublePlacedGood(converted, i, patternToTest, 1.3);
+//					if (color == 0.0){
+//						System.out.println("green");
+//					}
+//					else if (color == Double.MAX_VALUE) {
+//						System.out.println("/!\\ RED ALERT /!\\");
+//					}
+//					else {
+//						System.out.println("ORANGE");
+//					}
+//				}
+//			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();
