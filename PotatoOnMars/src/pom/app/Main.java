@@ -117,7 +117,7 @@ public class Main {
 			System.out.println("\nJeu de données h = "+j+"\n"); // Passage des données
 			for(int i = 0; i < 10 ; i++) // 240 données ? 10 patterns ?
 			{
-				System.out.println(corrupted_data[i*SaxParameters.slidingWindowSize+j]);
+				System.out.println(corrupted_data[i*SaxParameters.slidingWindowSize+j]); //
 			}
 			
 			System.out.println("\nRépartition du jeu de données sur la gaussienne h = "+j+"\n"); // Passage des données
