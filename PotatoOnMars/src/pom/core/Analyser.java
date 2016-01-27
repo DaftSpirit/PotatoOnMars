@@ -210,7 +210,7 @@ public class Analyser {
 	
 	public double checkAnomaly(double value,int hour){
 		
-		System.out.println("\n% de chance d'anomalie sur h "+hour+": "); 
+		System.out.println("\n% de chance d'anomalie sur h "+hour+" de la data"+"value :"); 
 		double res = this.normalLaw(value, data[hour][4], data[hour][2]); // 4 = EC , 2 = MOY
 		if (res > 1) res = 1;
 		return (1 - res)*100;
