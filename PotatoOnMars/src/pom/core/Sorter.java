@@ -77,16 +77,6 @@ public class Sorter {
 				hourSorted = j;
 			}
 		}
-
-		double max = Double.MIN_VALUE;
-		for (int k = 0; k < distances.length; ++k) {
-			if (distances[k] > max) {
-				max = distances[k];
-			}
-		}
-		
-//		System.out.println("le min : " + min);
-//		System.out.println("le max : " + max);
 		
 		if (hourSorted == hour) {
 			// System.out.println("GG WP !!!\n");
@@ -150,16 +140,6 @@ public class Sorter {
 				hourSorted = j;
 			}
 		}
-
-		double max = Double.MIN_VALUE;
-		for (int k = 0; k < distances.length; ++k) {
-			if (distances[k] > max) {
-				max = distances[k];
-			}
-		}
-		
-//		System.out.println("le min : " + min);
-//		System.out.println("le max : " + max);
 		
 		if (hourSorted == hour) {
 			return true;
@@ -219,13 +199,6 @@ public class Sorter {
 				hourSorted = j;
 			}
 		}
-
-		// double max = Double.MIN_VALUE;
-		// for (int k = 0; k < distances.length; ++k) {
-		// if (distances[k] > max) {
-		// max = distances[k];
-		// }
-		// }
 
 		if ((hourSorted == hour)) {
 			if(min > thresold){
@@ -293,13 +266,6 @@ public class Sorter {
 				hourSorted = j;
 			}
 		}
-
-		// double max = Double.MIN_VALUE;
-		// for (int k = 0; k < distances.length; ++k) {
-		// if (distances[k] > max) {
-		// max = distances[k];
-		// }
-		// }
 
 		if ((hourSorted == hour)) {
 			if(min > thresold){
