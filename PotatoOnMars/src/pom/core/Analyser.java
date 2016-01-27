@@ -216,8 +216,100 @@ public class Analyser {
 		return (1 - res)*100;
 	}
 	
+	public void analyseAlldata(double[] corrupted_data) {
+		System.out.println("\n---------------Gaussian distribution-------------\n");
+		
+		double precision = 10;
+		double tab[] = new double[20];
+		
+		for(int j = 0; j < 24 ; j++) // J = LES HEURES
+		{
+			System.out.println("\nLoi de probabilité de l'heure "+j+"\n");
+			System.out.println("========================================");
+			for(double i = 0; i < precision ; i += 0.2)
+			{
+				System.out.println((int)i + " - " + this.normalLaw(i, data[j][4], data[j][2])); // loi gaussiennes (v,ec,moy)
+			}
+			
+			System.out.println("\nJeu de données h = "+j+"\n"); // Passage des données
+			for(int i = 0; i < 10 ; i++) // 240 données ? 10 patterns ?
+			{
+				System.out.println(corrupted_data[i*SaxParameters.slidingWindowSize+j]); //
+			}
+			
+			System.out.println("\nRépartition du jeu de données sur la gaussienne h = "+j+"\n"); // Passage des données
+			for(int i = 0; i < 10 ; i++) // 240 données ? 10 patterns ?
+			{
+				tab[i] = this.normalLaw(corrupted_data[i*SaxParameters.slidingWindowSize+j], data[j][4], data[j][2]);
+				System.out.println(tab[i]);
+			}
+			
+			System.out.println("\n% de chance d'anomalie sur h "+j+"?\n"); // Chance d'anomalie
+			for(int i = 0; i < 10 ; i++)
+			{
+				if (tab[i] > 1) tab[i] = 1;
+				tab[i] = (1 - tab[i])*100;
+				System.out.println(tab[i]);
+			}
+			
+			System.out.println("========================================");
+
+			
+		}
+	}
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	System.out.println("\n---------------Gaussian distribution-------------\n");
+//	
+//	double precision = 10;
+//	double tab[] = new double[20];
+//	
+//	for(int j = 0; j < 24 ; j++) // J = LES HEURES
+//	{
+//		System.out.println("\nLoi de probabilité de l'heure "+j+"\n");
+//		System.out.println("========================================");
+//		for(double i = 0; i < precision ; i += 0.2)
+//		{
+//			System.out.println((int)i + " - " + anal.normalLaw(i, data[j][4], data[j][2])); // loi gaussiennes (v,ec,moy)
+//		}
+//		
+//		System.out.println("\nJeu de données h = "+j+"\n"); // Passage des données
+//		for(int i = 0; i < 10 ; i++) // 240 données ? 10 patterns ?
+//		{
+//			System.out.println(corrupted_data[i*SaxParameters.slidingWindowSize+j]); //
+//		}
+//		
+//		System.out.println("\nRépartition du jeu de données sur la gaussienne h = "+j+"\n"); // Passage des données
+//		for(int i = 0; i < 10 ; i++) // 240 données ? 10 patterns ?
+//		{
+//			tab[i] = anal.normalLaw(corrupted_data[i*SaxParameters.slidingWindowSize+j], data[j][4], data[j][2]);
+//			System.out.println(tab[i]);
+//		}
+//		
+//		System.out.println("\n% de chance d'anomalie sur h "+j+"?\n"); // Chance d'anomalie
+//		for(int i = 0; i < 10 ; i++)
+//		{
+//			if (tab[i] > 1) tab[i] = 1;
+//			tab[i] = (1 - tab[i])*100;
+//			System.out.println(tab[i]);
+//		}
+//		
+//		System.out.println("========================================");
+//
+//		
+//	}
 	
 
 }
