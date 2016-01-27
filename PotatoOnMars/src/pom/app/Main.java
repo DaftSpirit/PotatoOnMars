@@ -6,7 +6,6 @@ import java.util.Set;
 import pom.core.Analyser;
 import pom.core.LearningTest;
 import pom.core.Sorter;
-import pom.util.DoublePatternList;
 import pom.util.PatternList;
 import pom.util.SaxParameters;
 import net.seninp.jmotif.sax.SAXException;
@@ -31,51 +30,35 @@ public class Main {
 		double[] ts = TSProcessor.readFileColumn(SaxParameters.dataFName, 0, 0);
 		double[] corrupted_data = TSProcessor.readFileColumn("data/learning/ROC_pic.txt", 0, 0);
 
+		System.out.println("\n------------------discretisation-------------------\n");
+
 		// perform the discretization ( 240 motifs != pour chaque fenetre de 24 points)
 		SAXRecords res = sp.ts2saxViaWindow(ts, SaxParameters.slidingWindowSize, SaxParameters.paaSize, 
 		    na.getCuts(SaxParameters.alphabetSize), SaxParameters.nrStrategy, SaxParameters.nThreshold);
 
 		// print the output
 		Set<Integer> index = res.getIndexes();
-		
-		// 10 motifs les plus recurrents
-		anal.printRecurrentPatterns(res, 10);
-		
-		System.out.println("\n------------------------------------------------\n");
-    	
-		// Rangement dans le tableau
+		    	
+		// Rangement dans le tableau (patterns)
 		PatternList pl = anal.makeRanksByHour(res, index); 
 		
 		//patterns convertis en doubles
-		DoublePatternList converted = anal.convertRanks(pl);
-		System.out.println(converted);
-		System.out.println("\n------------------------------------------------\n");
+		//DoublePatternList converted = anal.convertRanks(pl); BUGGED
+		//System.out.println("\n------------------------------------------------\n");
 			
 		// LISSAGE
 		double[] ts_lisse = anal.medianStraightener5Points(ts);
 		anal.dataWritter(ts_lisse,"data/48 donnees lissses.txt");
 		
+		System.out.println("\n------------------discretisation lissée-------------------\n");
+
+		// Discrétisation sur la liste lisse
 		SAXRecords res_lisse = sp.ts2saxViaWindow(ts_lisse, SaxParameters.slidingWindowSize, SaxParameters.paaSize, 
 			    na.getCuts(SaxParameters.alphabetSize), SaxParameters.nrStrategy, SaxParameters.nThreshold);
 		Set<Integer> index_lisse = res.getIndexes();
 		
-		PatternList pl_lisse = anal.makeRanksByHour(res_lisse, index_lisse); 
-		
-		System.out.println("\n-----------------------------------------------\n");
-		
-		//TRI / SORTING
-		if(so.sortAndPrint(pl, 0, 0)) {
-			System.out.println("Success !!!\n");
-		}
-		else {
-			System.out.println("Failure !!\n");
-		}
-		if(so.sortAndPrint(pl_lisse, 6, 0)) {
-			System.out.println("Success !!!\n");
-		}
-		else{
-			System.out.println("Failure !!\n");
-		}
+		// Tableau lisse
+		PatternList pl_lisse = anal.makeRanksByHour(res_lisse, index_lisse); 		
 		
 		System.out.println("\n------------------courbAnalyser-------------------\n");
 		
@@ -88,22 +71,12 @@ public class Main {
 		
 		System.out.println("\n avec la patternList lisse");
 		lt.testForPatternList(pl_lisse);
-		
-		System.out.println("\n avec une DoublePatternList");
-		lt.testForDoublePatternList(converted);
-    	// loi normale de probabilité euclidienne (utilisation de la moyenne et écart type pour trouver la probabilité d'appartenance au paquet 18h)
-		// apprentissage sur des données propres
-		// courbe appliquant la loi de probabilité de chaque point (pic sur un donnée anormale)
-		// fenetre pour le comportement
-		// idem pour les fenetres, analyser l'écart type (meme si elle est bien classée) car il peut etre trop grand quand meme)
-		// courbe de résultats, avec un seuil qui dit ce qu'es une anomalie ou non (fenetrée)
+
 		
 		System.out.println("\n---------------Gaussian distribution-------------\n");
 		
-		double test = 1.5;
 		double precision = 10;
 		double tab[] = new double[20];
-		//double tests[] = {1.8,1.9,1.8,1.8,1.7,1.9,1.8,2.0,2.1,2.3,2.4,2.1,2.0,2.3,2.2,2.1,4.0,1.9,1.8,2.3}; // H = 6
 		
 		for(int j = 0; j < 24 ; j++) // J = LES HEURES
 		{
@@ -139,8 +112,12 @@ public class Main {
 
 			
 		}
-
 		
+		System.out.println("JE BETA TESTE WESH");
+
+		//anal.checkAnomaly(value, hour);
+		double error = anal.checkAnomaly(2.50056124562001, 16);
+		System.out.println(error);
 		
 		
 	}

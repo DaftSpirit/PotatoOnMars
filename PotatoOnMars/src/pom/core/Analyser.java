@@ -19,6 +19,8 @@ import net.seninp.jmotif.sax.datastructure.SAXRecords;
  */
 public class Analyser {
 	
+	private double[][] data; // matrice de moyenne / ec / min / max
+
 	/**
 	 * Print best nb patterns
 	 * @param rec : SAXRecord object to use
@@ -192,6 +194,7 @@ public class Analyser {
 			System.out.print(res[k][4]);
 			System.out.println(" ]");
 		}
+		this.data = res;
 		return res;
 	}
 	
@@ -203,6 +206,14 @@ public class Analyser {
 		
 		//res = ( 1 / (ec * Math.sqrt(2*Math.PI))) * Math.exp( -.5 * Math.pow(((value - moy)/ec), 2)); // loi normale ?
 		//return res;
+	}
+	
+	public double checkAnomaly(double value,int hour){
+		
+		System.out.println("\n% de chance d'anomalie sur h "+hour+": "); 
+		double res = this.normalLaw(value, data[hour][4], data[hour][2]); // 4 = EC , 2 = MOY
+		if (res > 1) res = 1;
+		return (1 - res)*100;
 	}
 	
 	
