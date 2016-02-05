@@ -13,3 +13,10 @@ public class SaxParameters {
 	public final static double nThreshold = 0.01;
 	
 }
+
+
+// rajouter les données du use case en plus de l'apprentissage pour la méthode des fenetres (en validant a partir des doubles)' ?
+// refaire l'analyse a chaque fois ? 
+// fichier d'apprentissage qui reste tel quel ? doit on l'update au fur et a mesure des events + update du tableau ? update avec des donnéees potentiellement erronées ?
+
+// load + nombre de requetes / reactivité
