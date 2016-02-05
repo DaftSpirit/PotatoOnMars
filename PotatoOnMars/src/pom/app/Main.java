@@ -1,6 +1,8 @@
 package pom.app;
 
 import java.io.IOException;
+import java.util.Calendar;
+
 import pom.core.Analyser;
 import pom.core.LearningTest;
 import pom.core.SAXAnalyser;
@@ -13,6 +15,29 @@ import net.seninp.jmotif.sax.TSProcessor;
 import net.seninp.jmotif.sax.alphabet.NormalAlphabet;
 
 public class Main {
+	
+	public double[] patternTest(double[] learning, Analyser anal, Sorter so,
+			SAXAnalyser sax, double data, PatternList learn) throws IOException, SAXException {
+		
+		Calendar cal = Calendar.getInstance();
+		int hour = cal.get(Calendar.HOUR);
+		
+		double thresold = 0.9;
+		double copy[] = new double[learning.length + 1];
+		
+		for(int i = 0; i < copy.length-1; ++i){
+			copy[i] = learning[i];
+		}
+		copy[copy.length-1] = data;
+		PatternList pl = sax.process(copy);
+		
+		String patternToTest = pl.get(hour).get(pl.get(hour).size()-1);
+		
+		double res = so.stringPlacedGood(learn, hour, patternToTest, thresold);
+		System.out.println(res);
+		
+		return copy;
+	}
 
 	public static void main(String[] args) {
 
