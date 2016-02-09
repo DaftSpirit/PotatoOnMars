@@ -2,6 +2,7 @@ package pom.app;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Date;
 
 import pom.core.Analyser;
 import pom.core.LearningTest;
@@ -42,6 +43,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		// instantiate classes
+		Date start = new Date();
 		Analyser anal = new Analyser();
 		Sorter so = new Sorter();
 		LearningTest lt = new LearningTest(so);
@@ -94,6 +96,8 @@ public class Main {
 			System.out.println("ANALYSE D'UNE DATA");
 			double error = anal.checkAnomaly(2.50056124562001, 16);
 			System.out.println(error);
+			Date end = new Date();
+			System.out.println(end.getTime()-start.getTime());
 
 		} catch (IOException | SAXException e) {
 			e.printStackTrace();
