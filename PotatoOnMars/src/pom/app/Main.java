@@ -97,7 +97,7 @@ public class Main {
 			double error = anal.checkAnomaly(2.50056124562001, 16);
 			System.out.println(error);
 			Date end = new Date();
-			System.out.println(end.getTime()-start.getTime());
+			System.out.println("\n execution time : " + (end.getTime()-start.getTime()));
 
 		} catch (IOException | SAXException e) {
 			e.printStackTrace();
