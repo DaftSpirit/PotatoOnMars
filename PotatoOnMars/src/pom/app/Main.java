@@ -8,6 +8,7 @@ import pom.core.Analyser;
 import pom.core.LearningTest;
 import pom.core.SAXAnalyser;
 import pom.core.Sorter;
+import pom.util.Dolphin;
 import pom.util.PatternList;
 import pom.util.SaxParameters;
 import net.seninp.jmotif.sax.SAXException;
@@ -54,20 +55,11 @@ public class Main {
 		//		.println("\n------------------discretisation-------------------\n");
 		try {
 			//double[] corrupted_data;
-			PatternList pl;
 //			corrupted_data = TSProcessor.readFileColumn(
 //					"data/learning/ROC_pic.txt", 0, 0);
-			double[] ts = TSProcessor.readFileColumn(
-					SaxParameters.dataFName, 0, 0);
+			double[] ts = Dolphin.flipper(SaxParameters.dataFName);
 			
-			for(int i = 0; i < ts.length; ++i){
-				double temp = ts[i];
-				ts[i] = ts[(ts.length-1)-i];
-				ts[(ts.length-1)-i] = temp;
-			}
-			
-			
-			pl = sax.process(ts);
+			PatternList pl = sax.process(ts);
 
 			// LISSAGE
 //			double[] ts_lisse = anal.medianStraightener5Points(ts);
