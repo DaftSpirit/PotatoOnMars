@@ -60,6 +60,12 @@ public class Main {
 			double[] ts = TSProcessor.readFileColumn(
 					SaxParameters.dataFName, 0, 0);
 			
+			for(int i = 0; i < ts.length; ++i){
+				double temp = ts[i];
+				ts[i] = ts[(ts.length-1)-i];
+				ts[(ts.length-1)-i] = temp;
+			}
+			
 			
 			pl = sax.process(ts);
 
