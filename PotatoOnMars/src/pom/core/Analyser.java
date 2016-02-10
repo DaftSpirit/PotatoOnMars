@@ -224,7 +224,7 @@ public class Analyser {
 		
 		for(int j = 0; j < 24 ; j++) // J = LES HEURES
 		{
-			/*System.out.println("\nLoi de probabilité de l'heure "+j+"\n");
+			System.out.println("\nLoi de probabilité de l'heure "+j+"\n");
 			System.out.println("========================================");
 			for(double i = 0; i < precision ; i += 0.2)
 			{
@@ -252,7 +252,7 @@ public class Analyser {
 				System.out.println(tab[i]);
 			}
 			
-			System.out.println("========================================");*/
+			System.out.println("========================================");
 
 			
 		}

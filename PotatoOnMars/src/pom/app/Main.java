@@ -44,36 +44,17 @@ public class Main {
 	public static void main(String[] args) {
 
 		// instantiate classes
-		Date start = new Date();
 		Analyser anal = new Analyser();
 		Sorter so = new Sorter();
 		LearningTest lt = new LearningTest(so);
 		SAXAnalyser sax = new SAXAnalyser(anal, new SAXProcessor(),
 				new NormalAlphabet());
 
-		//System.out
-		//		.println("\n------------------discretisation-------------------\n");
 		try {
-			//double[] corrupted_data;
-//			corrupted_data = TSProcessor.readFileColumn(
-//					"data/learning/ROC_pic.txt", 0, 0);
+
 			double[] ts = Dolphin.flipper(SaxParameters.dataFName);
 			
 			PatternList pl = sax.process(ts);
-
-			// LISSAGE
-//			double[] ts_lisse = anal.medianStraightener5Points(ts);
-//			anal.dataWritter(ts_lisse, "data/48 donnees lissses.txt");
-
-			//System.out
-			//		.println("\n------------------discretisation lissée-------------------\n");
-
-			// Tableau lisse
-			//PatternList pl_lisse;
-//			double[] data_lisses = TSProcessor.readFileColumn(
-//					"data/48 donnees lissses.txt", 0, 0);
-//			pl_lisse = sax.process(data_lisses);
-
 			//System.out
 			//		.println("\n------------------courbAnalyser-------------------\n");
 
@@ -85,21 +66,15 @@ public class Main {
 			System.out.println("\n avec la patternList de base\n");*/
 			//lt.testForPatternList(pl);
 
-			//System.out.println("\n avec la patternList lisse");
-			//lt.testForPatternList(pl_lisse);
-
-			//System.out.println("ANALYSE DE TOUTE LA DATA");
-			//anal.analyseAlldata(corrupted_data);
+			System.out.println("ANALYSE DE TOUTE LA DATA");
+			anal.analyseAlldata(ts);
 
 			//System.out.println("ANALYSE D'UNE DATA");
 			//double error = anal.checkAnomaly(2.50056124562001, 16);
 			//System.out.println(error);
-			Date end = new Date();
-			System.out.println("\n execution time : " + (end.getTime()-start.getTime()));
 
 		} catch (IOException | SAXException e) {
 			e.printStackTrace();
 		}
-
 	}
 }

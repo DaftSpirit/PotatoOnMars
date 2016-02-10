@@ -11,7 +11,7 @@ public class Dolphin {
 		double[] ts = TSProcessor.readFileColumn(
 				fileName, 0, 0);		
 		
-		for(int i = 0; i < ts.length; ++i){
+		for(int i = 0; i < ts.length / 2; ++i){
 			double temp = ts[i];
 			ts[i] = ts[(ts.length-1)-i];
 			ts[(ts.length-1)-i] = temp;
