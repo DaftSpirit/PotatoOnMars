@@ -1,7 +1,10 @@
 package pom.core;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
+import net.seninp.jmotif.sax.SAXException;
 import pom.util.Distances;
 import pom.util.DoublePatternList;
 import pom.util.PatternList;
@@ -77,7 +80,7 @@ public class Sorter {
 				hourSorted = j;
 			}
 		}
-		
+
 		if (hourSorted == hour) {
 			// System.out.println("GG WP !!!\n");
 			return true;
@@ -140,7 +143,7 @@ public class Sorter {
 				hourSorted = j;
 			}
 		}
-		
+
 		if (hourSorted == hour) {
 			return true;
 		} else {
@@ -201,10 +204,9 @@ public class Sorter {
 		}
 
 		if ((hourSorted == hour)) {
-			if(min > thresold){
+			if (min > thresold) {
 				return min;
-			}
-			else {
+			} else {
 				return 0.0;
 			}
 		} else {
@@ -268,15 +270,38 @@ public class Sorter {
 		}
 
 		if ((hourSorted == hour)) {
-			if(min > thresold){
+			if (min > thresold) {
 				return min;
-			}
-			else {
+			} else {
 				return 0.0;
 			}
 		} else {
 			return Double.MAX_VALUE;
 		}
+	}
+
+	public double[] patternTest(double[] learning, Analyser anal,
+			SAXAnalyser sax, double data, PatternList learn, int hour)
+			throws IOException, SAXException {
+
+//		Calendar cal = Calendar.getInstance();
+//		int hour = cal.get(Calendar.HOUR);
+
+		double thresold = 0.9;
+		double copy[] = new double[learning.length + 1];
+
+		for (int i = 0; i < copy.length - 1; ++i) {
+			copy[i] = learning[i];
+		}
+		copy[copy.length - 1] = data;
+		PatternList pl = sax.process(copy);
+
+		String patternToTest = pl.get(hour).get(pl.get(hour).size() - 1);
+
+		double res = this.stringPlacedGood(learn, hour, patternToTest, thresold);
+		System.out.println(res);
+
+		return copy;
 	}
 
 }

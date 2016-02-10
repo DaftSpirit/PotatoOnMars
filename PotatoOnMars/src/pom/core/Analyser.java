@@ -51,7 +51,7 @@ public class Analyser {
 		for (Integer idx : index) {
 			ranks.get(idx%SaxParameters.steps).add(String.valueOf(rec.getByIndex(idx).getPayload()));
 		}
-    	//System.out.println(ranks);
+    	System.out.println(ranks);
     	return ranks;
 	}
 	
