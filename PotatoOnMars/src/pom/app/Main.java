@@ -43,7 +43,7 @@ public class Main {
 					.println("\n---------------Learning & Percentages-------------\n");
 
 			//System.out.println("\n avec la patternList de base\n");
-			so.patternTest(ts, anal, sax, 0.8 , pl, 11);
+			so.patternTest(ts, anal, sax, 0.823 , pl, 3);
 			// lt.testForPatternList(pl);
 
 			System.out.println("ANALYSE DE TOUTE LA DATA");

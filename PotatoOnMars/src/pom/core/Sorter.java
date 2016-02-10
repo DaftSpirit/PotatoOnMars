@@ -299,8 +299,16 @@ public class Sorter {
 		String patternToTest = pl.get(hour).get(pl.get(hour).size() - 1);
 
 		double res = this.stringPlacedGood(learn, hour, patternToTest, thresold);
-		System.out.println(res);
-
+		if(res > thresold){
+			if(res != Double.MAX_VALUE){
+				System.out.println("Bien Place mais au dessus du seuil de : " + (res - thresold));
+			}
+			else {
+				System.out.println("PAS BIEN CLASSE !");
+			}
+		} else {
+			System.out.println("BIEN PLACE !");
+		}
 		return copy;
 	}
 
