@@ -25,7 +25,7 @@ public class SAXAnalyser {
 	
 	public PatternList process(double[] datas) throws IOException, SAXException{
 		
-		System.out.println("\n------------------discretisation-------------------\n");
+		//System.out.println("\n------------------discretisation-------------------\n");
 
 		// perform the discretization ( 240 motifs != pour chaque fenetre de 24 points)
 		SAXRecords res = sp.ts2saxViaWindow(datas, SaxParameters.slidingWindowSize, SaxParameters.paaSize, 

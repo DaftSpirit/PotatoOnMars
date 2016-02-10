@@ -50,13 +50,13 @@ public class Main {
 		SAXAnalyser sax = new SAXAnalyser(anal, new SAXProcessor(),
 				new NormalAlphabet());
 
-		System.out
-				.println("\n------------------discretisation-------------------\n");
+		//System.out
+		//		.println("\n------------------discretisation-------------------\n");
 		try {
-			double[] corrupted_data;
+			//double[] corrupted_data;
 			PatternList pl;
-			corrupted_data = TSProcessor.readFileColumn(
-					"data/learning/ROC_pic.txt", 0, 0);
+//			corrupted_data = TSProcessor.readFileColumn(
+//					"data/learning/ROC_pic.txt", 0, 0);
 			double[] ts = TSProcessor.readFileColumn(
 					SaxParameters.dataFName, 0, 0);
 			
@@ -64,38 +64,38 @@ public class Main {
 			pl = sax.process(ts);
 
 			// LISSAGE
-			double[] ts_lisse = anal.medianStraightener5Points(ts);
-			anal.dataWritter(ts_lisse, "data/48 donnees lissses.txt");
+//			double[] ts_lisse = anal.medianStraightener5Points(ts);
+//			anal.dataWritter(ts_lisse, "data/48 donnees lissses.txt");
 
-			System.out
-					.println("\n------------------discretisation lissée-------------------\n");
+			//System.out
+			//		.println("\n------------------discretisation lissée-------------------\n");
 
 			// Tableau lisse
-			PatternList pl_lisse;
-			double[] data_lisses = TSProcessor.readFileColumn(
-					"data/48 donnees lissses.txt", 0, 0);
-			pl_lisse = sax.process(data_lisses);
+			//PatternList pl_lisse;
+//			double[] data_lisses = TSProcessor.readFileColumn(
+//					"data/48 donnees lissses.txt", 0, 0);
+//			pl_lisse = sax.process(data_lisses);
 
-			System.out
-					.println("\n------------------courbAnalyser-------------------\n");
+			//System.out
+			//		.println("\n------------------courbAnalyser-------------------\n");
 
 			double[][] data = anal.courbAnalyser(ts);
 
-			System.out
+			/*System.out
 					.println("\n---------------Learning & Percentages-------------\n");
 
-			System.out.println("\n avec la patternList de base\n");
-			lt.testForPatternList(pl);
+			System.out.println("\n avec la patternList de base\n");*/
+			//lt.testForPatternList(pl);
 
-			System.out.println("\n avec la patternList lisse");
-			lt.testForPatternList(pl_lisse);
+			//System.out.println("\n avec la patternList lisse");
+			//lt.testForPatternList(pl_lisse);
 
-			System.out.println("ANALYSE DE TOUTE LA DATA");
-			anal.analyseAlldata(corrupted_data);
+			//System.out.println("ANALYSE DE TOUTE LA DATA");
+			//anal.analyseAlldata(corrupted_data);
 
-			System.out.println("ANALYSE D'UNE DATA");
-			double error = anal.checkAnomaly(2.50056124562001, 16);
-			System.out.println(error);
+			//System.out.println("ANALYSE D'UNE DATA");
+			//double error = anal.checkAnomaly(2.50056124562001, 16);
+			//System.out.println(error);
 			Date end = new Date();
 			System.out.println("\n execution time : " + (end.getTime()-start.getTime()));
 

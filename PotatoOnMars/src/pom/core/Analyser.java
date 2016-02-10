@@ -51,7 +51,7 @@ public class Analyser {
 		for (Integer idx : index) {
 			ranks.get(idx%SaxParameters.steps).add(String.valueOf(rec.getByIndex(idx).getPayload()));
 		}
-    	System.out.println(ranks);
+    	//System.out.println(ranks);
     	return ranks;
 	}
 	
@@ -179,7 +179,7 @@ public class Analyser {
 			res[i%SaxParameters.steps][4] = Math.sqrt(variance);
 		}
 
-		System.out.println("		MIN		MAX			MOY		VARIANCE		EC");
+		/*System.out.println("		MIN		MAX			MOY		VARIANCE		EC");
 		for(int k =0 ; k < res.length ; k++)
 		{
 			System.out.print("h : " + k + " [ ");
@@ -193,7 +193,7 @@ public class Analyser {
 			System.out.print("  ");
 			System.out.print(res[k][4]);
 			System.out.println(" ]");
-		}
+		}*/
 		this.data = res;
 		return res;
 	}
@@ -217,14 +217,14 @@ public class Analyser {
 	}
 	
 	public void analyseAlldata(double[] corrupted_data) {
-		System.out.println("\n---------------Gaussian distribution-------------\n");
+		//System.out.println("\n---------------Gaussian distribution-------------\n");
 		
 		double precision = 10;
 		double tab[] = new double[20];
 		
 		for(int j = 0; j < 24 ; j++) // J = LES HEURES
 		{
-			System.out.println("\nLoi de probabilité de l'heure "+j+"\n");
+			/*System.out.println("\nLoi de probabilité de l'heure "+j+"\n");
 			System.out.println("========================================");
 			for(double i = 0; i < precision ; i += 0.2)
 			{
@@ -252,7 +252,7 @@ public class Analyser {
 				System.out.println(tab[i]);
 			}
 			
-			System.out.println("========================================");
+			System.out.println("========================================");*/
 
 			
 		}
