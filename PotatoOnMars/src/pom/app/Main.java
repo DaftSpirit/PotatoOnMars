@@ -42,12 +42,12 @@ public class Main {
 			System.out
 					.println("\n---------------Learning & Percentages-------------\n");
 
-			System.out.println("\n avec la patternList de base\n");
+			//System.out.println("\n avec la patternList de base\n");
 			so.patternTest(ts, anal, sax, 0.8 , pl, 11);
 			// lt.testForPatternList(pl);
 
-			// System.out.println("ANALYSE DE TOUTE LA DATA");
-			// anal.analyseAlldata(ts);
+			System.out.println("ANALYSE DE TOUTE LA DATA");
+			//anal.analyseAlldata(ts);
 
 			// System.out.println("ANALYSE D'UNE DATA");
 			// double error = anal.checkAnomaly(2.50056124562001, 16);

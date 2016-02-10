@@ -4,7 +4,7 @@ import net.seninp.jmotif.sax.NumerosityReductionStrategy;
 
 public class SaxParameters {
 	
-	public final static String dataFName = "data/database/load 1 avril.txt";
+	public final static String dataFName = "data/database/load minuit.txt";
 	public final static int slidingWindowSize = 24;
 	public final static int paaSize = 24;
 	public final static int alphabetSize = 12;

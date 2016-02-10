@@ -173,7 +173,7 @@ public class Analyser {
 				xi += Math.pow(data[i+j*SaxParameters.steps] - res[i%SaxParameters.steps][2], 2);
 				cnt++;
 			}
-			variance = xi ;/// cnt;
+			variance = xi/ cnt; // DIVISION OU PAS POUR NORMALISER
 			
 			res[i%SaxParameters.steps][3] = variance;
 			res[i%SaxParameters.steps][4] = Math.sqrt(variance);
