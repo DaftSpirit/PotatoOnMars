@@ -179,7 +179,7 @@ public class Analyser {
 			res[i%SaxParameters.steps][4] = Math.sqrt(variance);
 		}
 
-		/*System.out.println("		MIN		MAX			MOY		VARIANCE		EC");
+		System.out.println("		MIN		MAX			MOY		VARIANCE		EC");
 		for(int k =0 ; k < res.length ; k++)
 		{
 			System.out.print("h : " + k + " [ ");
@@ -193,7 +193,7 @@ public class Analyser {
 			System.out.print("  ");
 			System.out.print(res[k][4]);
 			System.out.println(" ]");
-		}*/
+		}
 		this.data = res;
 		return res;
 	}
