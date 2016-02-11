@@ -1,5 +1,7 @@
 package pom.app;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,7 +20,7 @@ import net.seninp.jmotif.sax.alphabet.NormalAlphabet;
 
 public class Main {
 
-
+	private static String file = "data/test/result.txt";
 
 	public static void main(String[] args) {
 
@@ -32,18 +34,27 @@ public class Main {
 		try {
 
 			double[] ts = Dolphin.flipper(SaxParameters.dataFName);
+			double[] tests = Dolphin.flipper("data/test/test.txt");
 
 			PatternList pl = sax.process(ts);
 			// System.out
 			// .println("\n------------------courbAnalyser-------------------\n");
 
 			double[][] data = anal.courbAnalyser(ts);
+			FileWriter fw = new FileWriter(new File("data/test/result.txt"));
+			for(int i = 0; i < 20; ++i){
+				System.out.println(tests[i]);
+				ts = so.patternTest(ts, anal, sax, tests[i], pl, (i+3) % SaxParameters.steps, 1.1);
+				//double tmp = anal.checkAnomaly(tests[i], (i+3) % SaxParameters.steps);
+				
+				//fw.write(Double.toString(tmp) + "\n");
+				//System.out.println(tmp);
+			}
+			fw.close();
 
-			System.out
-					.println("\n---------------Learning & Percentages-------------\n");
 
 			//System.out.println("\n avec la patternList de base\n");
-			so.patternTest(ts, anal, sax, 0.823 , pl, 3, 0.9);
+			//so.patternTest(ts, anal, sax, 0.823 , pl, 3, 0.9);
 			// lt.testForPatternList(pl);
 
 			System.out.println("ANALYSE DE TOUTE LA DATA");
