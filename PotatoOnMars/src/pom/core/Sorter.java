@@ -280,14 +280,28 @@ public class Sorter {
 		}
 	}
 
+	/**
+	 * The main function for patterns. Takes a new double, the array of learning
+	 * and a thresold to tell if the data is an anomaly or not
+	 * 
+	 * @param learning : the array of doubles which represents the data for all the hours
+	 * @param anal : the analyser to make a patternList
+	 * @param sax : the object that makes the patterns
+	 * @param data : the new double that has arrived
+	 * @param learn : the learning PatternList
+	 * @param hour : the hour at which the data has arrived
+	 * @param thresold : the thresold of distance to tell if a pattern is an anomaly or not
+	 * @return : the new array of double updated with data
+	 * @throws IOException
+	 * @throws SAXException
+	 */
 	public double[] patternTest(double[] learning, Analyser anal,
-			SAXAnalyser sax, double data, PatternList learn, int hour)
+			SAXAnalyser sax, double data, PatternList learn, int hour, double thresold)
 			throws IOException, SAXException {
 
-//		Calendar cal = Calendar.getInstance();
-//		int hour = cal.get(Calendar.HOUR);
+		// Calendar cal = Calendar.getInstance();
+		// int hour = cal.get(Calendar.HOUR);
 
-		double thresold = 0.9;
 		double copy[] = new double[learning.length + 1];
 
 		for (int i = 0; i < copy.length - 1; ++i) {
@@ -298,12 +312,13 @@ public class Sorter {
 
 		String patternToTest = pl.get(hour).get(pl.get(hour).size() - 1);
 
-		double res = this.stringPlacedGood(learn, hour, patternToTest, thresold);
-		if(res > thresold){
-			if(res != Double.MAX_VALUE){
-				System.out.println("Bien Place mais au dessus du seuil de : " + (res - thresold));
-			}
-			else {
+		double res = this
+				.stringPlacedGood(learn, hour, patternToTest, thresold);
+		if (res > thresold) {
+			if (res != Double.MAX_VALUE) {
+				System.out.println("Bien Place mais au dessus du seuil de : "
+						+ (res - thresold));
+			} else {
 				System.out.println("PAS BIEN CLASSE !");
 			}
 		} else {
